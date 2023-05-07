@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct{
     char patientName[15];
@@ -23,24 +25,61 @@ void searchByDate(medical *m[],int cnt); // Æ¯Á¤ ÀÏÀÚ¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇ
 void searchByDepartment(medical *m[],int cnt); // Æ¯Á¤ Áø·á°ú¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
 void searchByProf(medical *m[],int cnt); // Æ¯Á¤ ±³¼ö¿¡°Ô ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
 
+void proflist(char s[]){
+    char deptList[7][20]={{"¿Ü°ú"},{"³»°ú"},{"ÀÌºñÀÎÈÄ°ú"},{"½Å°æ°ú"},{"»êºÎÀÎ°ú"},{"¼Ò¾Æ°ú"},{"¾È°ú"}};
+
+    for(int i=0;i<7;i++){
+        if(strstr(s,deptList[i])){
+            printf("¼±ÅÃÇÑ Áø·á°ú´Â %sÀÔ´Ï´Ù.\n",s);
+            break;
+        }
+    }
+    
+}
 
 int addAppointment(medical *m){
     printf("**************************************************\n");
     printf("È¯ÀÚ¸íÀº? ");
-    printf("Èñ¸Á ¿¹¾àÀÏÀÚ´Â(eg. 20230505(2023³â 5¿ù 5ÀÏ))? ");
-    printf("»ı³â¿ùÀÏÀº(eg. 20230505(2023³â 5¿ù 5ÀÏ))? ");
-    printf("¼ºº°Àº? ");
+    fflush(stdin);
+    fgets(m->patientName,sizeof(m->patientName),stdin);
+    m->patientName[strlen(m->patientName)-1]='\0';
 
-    printf("\n [¡á¡á¡á¡á ¿Ü°ú ¡á¡á¡á¡á ³»°ú ¡á¡á¡á¡á ÀÌºñÀÎÈÄ°ú ¡á¡á¡á¡á ½Å°æ°ú ¡á¡á¡á¡á »êºÎÀÎ°ú ¡á¡á¡á¡á ¼Ò¾Æ°ú ¡á¡á¡á¡á ¾È°ú ¡á¡á¡á¡á]");
+    printf("Èñ¸Á ¿¹¾àÀÏÀÚ´Â(eg. 20230505(2023³â 5¿ù 5ÀÏ))? ");
+    fflush(stdin);
+    fgets(m->date,sizeof(m->date),stdin);
+    m->date[strlen(m->date)-1]='\0';
+
+    printf("»ı³â¿ùÀÏÀº(eg. 20230505(2023³â 5¿ù 5ÀÏ))? ");
+    fflush(stdin);
+    fgets(m->birth,sizeof(m->birth),stdin);
+    m->birth[strlen(m->birth)-1]='\0';
+
+    printf("¼ºº°Àº(¿©ÀÚ : F, ³²ÀÚ : M)? ");
+    scanf("%c",&m->gender);
+
+    printf("\n[¡á¡á¡á¡á ¿Ü°ú ¡á¡á¡á¡á ³»°ú ¡á¡á¡á¡á ÀÌºñÀÎÈÄ°ú ¡á¡á¡á¡á ½Å°æ°ú ¡á¡á¡á¡á »êºÎÀÎ°ú ¡á¡á¡á¡á ¼Ò¾Æ°ú ¡á¡á¡á¡á ¾È°ú ¡á¡á¡á¡á]\n");
     printf("Èñ¸ÁÁø·á°ú´Â? ");
+    fflush(stdin);
+    fgets(m->medicDept,sizeof(m->medicDept),stdin);
+    m->medicDept[strlen(m->medicDept)-1]='\0';
+
     printf("\n");
-    proflist();
+    proflist(m->medicDept);
     printf("Èñ¸Á ±³¼ö´Â? ");
-    printf("Æ¯ÀÌ»çÇ×Àº(¸Ş¸ğ)? ");
+    fflush(stdin);
+    fgets(m->prof,sizeof(m->prof),stdin);
+    m->prof[strlen(m->prof)-1]='\0';
+
+    printf("Æ¯ÀÌ»çÇ×Àº(ÇöÀç Áõ»ó)? ");
+    fflush(stdin);
+    fgets(m->memo,sizeof(m->memo),stdin);
+    m->memo[strlen(m->memo)-1]='\0';
 
     return 1;
 }
-void readAppointment(medical m);
+void readAppointment(medical m){
+    printf("%s  %s  %s  %c  %s  %s  %s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
+}
 void listAppointment(medical *m[],int cnt);
 int updateAppointment(medical *m);
 int deleteAppointment(medical *m);
@@ -70,4 +109,10 @@ int selectMenu(){
     scanf("%d",&menu);
 
     return menu;
+}
+
+int main(){
+    medical m1;
+    int n=addAppointment(&m1);
+    readAppointment(m1);
 }
