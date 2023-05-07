@@ -12,7 +12,7 @@
 ## 🚀 팀원 소개 및 역할
 ### Member
  #### 박원진 github 주소: https://github.com/Wonjin-david
-| ![](https://user-images.githubusercontent.com/126576242/236665332-2f80adb4-9b32-4a7e-bc93-aca8e4597df4.png height="300px" width="300px)|
+| <img src="https://user-images.githubusercontent.com/126576242/236665332-2f80adb4-9b32-4a7e-bc93-aca8e4597df4.png" width="200" height="400"/>|
 | :--------------------------------------: |
 |             **박원진**              |
 |        **한동대학교 20학번 전산심화**        |
