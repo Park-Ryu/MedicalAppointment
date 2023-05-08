@@ -11,16 +11,16 @@
 
 </div>
 
-## ?H-medic¿¡ ´ëÇÑ ¼³¸í
+## ?H-medicì— ëŒ€í•œ ì„¤ëª…
 ### Medical Appointment System
-?<b> ´Ù¾çÇÑ Áø·á°ú¿Í ±³¼ö°¡ Á¸ÀçÇÏ´Â Á¾ÇÕ º´¿øÀÇ Áø·á ¿¹¾àÀ» °ü¸®ÇØÁÖ´Â ½Ã½ºÅÛÀÔ´Ï´Ù. Áø·á ¿¹¾à, ¼öÁ¤, Ãë¼Ò´Â ¹°·ĞÀÌ¸ç,
+?<b> ë‹¤ì–‘í•œ ì§„ë£Œê³¼ì™€ êµìˆ˜ê°€ ì¡´ì¬í•˜ëŠ” ì¢…í•© ë³‘ì›ì˜ ì§„ë£Œ ì˜ˆì•½ì„ ê´€ë¦¬í•´ì£¼ëŠ” ì‹œìŠ¤í…œì…ë‹ˆë‹¤. ì§„ë£Œ ì˜ˆì•½, ìˆ˜ì •, ì·¨ì†ŒëŠ” ë¬¼ë¡ ì´ë©°,
   
-   º´¿ø¿¡¼­µµ ´õ Æí¸®ÇÏ°Ô Áø·á ¿¹¾àÀ» °ü¸®ÇÒ ¼ö ÀÖµµ·Ï ±³¼öº°, ÀÏÀÚº°, Áø·á°úº° ¿¹¾à ÇöÈ²±îÁö ¾Ë ¼ö ÀÖ½À´Ï´Ù.
+   ë³‘ì›ì—ì„œë„ ë” í¸ë¦¬í•˜ê²Œ ì§„ë£Œ ì˜ˆì•½ì„ ê´€ë¦¬í•  ìˆ˜ ìˆë„ë¡ êµìˆ˜ë³„, ì¼ìë³„, ì§„ë£Œê³¼ë³„ ì˜ˆì•½ í˜„í™©ê¹Œì§€ ì•Œ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
  
 <br/>
 
 ## ?H-Medic CRUD & Function
-### ÄÚµå ¹× ±â´É
+### ì½”ë“œ ë° ê¸°ëŠ¥
 ```c
 typedef struct{
     char patientName[15];
@@ -32,55 +32,55 @@ typedef struct{
     char memo[50];
 }medical;
 
-int addAppointment(medical *m); // Áø·á ¿¹¾àÀ» Ãß°¡ÇÏ´Â ÇÔ¼ö
-void readAppointment(medical m); // ÇÏ³ªÀÇ ¿¹¾àµÈ Áø·á ¿¹¾àÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö 
-void listAppointment(medical *m[],int cnt); // ¿¹¾àµÈ Áø·á ¿¹¾à ¸ñ·ÏÀ» º¸¿©ÁÖ´Â ÇÔ¼ö
-int updateAppointment(medical *m); // ¿¹¾àµÈ Áø·á ¿¹¾à Áß Æ¯Á¤ ¿¹¾àÀ» ¼öÁ¤ÇØÁÖ´Â ÇÔ¼ö
-int deleteAppointment(medical *m); // ¿¹¾àµÈ Áø·á ¿¹¾à Áß Æ¯Á¤ ¿¹¾àÀ» »èÁ¦ÇØÁÖ´Â ÇÔ¼ö
-int selectAppointment(medical *m[],int cnt); // ¿¹¾àµÈ Áø·á ¿¹¾à Áß¿¡ ¼öÁ¤,»èÁ¦ÇÏ°í ½ÍÀº ¿¹¾àÀ» ¼±ÅÃÇØÁÖ´Â ÇÔ¼ö
-void saveToFile(medical *m[],int cnt); // µ¥ÀÌÅÍ¸¦ ÆÄÀÏ¿¡ ÀúÀåÇØÁÖ´Â ÇÔ¼ö
-int loadFile(medical *m[]); // ÆÄÀÏ¿¡¼­ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ ÀĞ¾î¿À´Â ÇÔ¼ö
-void searchPatient(medical *m[],int cnt); // ¿¹¾àµÈ È¯ÀÚ ÀÌ¸§À¸·Î ¿¹¾à ³»¿ªÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö 
-void searchByDate(medical *m[],int cnt); // Æ¯Á¤ ÀÏÀÚ¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
-void searchByDepartment(medical *m[],int cnt); // Æ¯Á¤ Áø·á°ú¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
-void searchByProf(medical *m[],int cnt); // Æ¯Á¤ ±³¼ö¿¡°Ô ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+int addAppointment(medical *m); // ì§„ë£Œ ì˜ˆì•½ì„ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
+void readAppointment(medical m); // í•˜ë‚˜ì˜ ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜ 
+void listAppointment(medical *m[],int cnt); // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ëª©ë¡ì„ ë³´ì—¬ì£¼ëŠ” í•¨ìˆ˜
+int updateAppointment(medical *m); // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ íŠ¹ì • ì˜ˆì•½ì„ ìˆ˜ì •í•´ì£¼ëŠ” í•¨ìˆ˜
+int deleteAppointment(medical *m); // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ íŠ¹ì • ì˜ˆì•½ì„ ì‚­ì œí•´ì£¼ëŠ” í•¨ìˆ˜
+int selectAppointment(medical *m[],int cnt); // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ì— ìˆ˜ì •,ì‚­ì œí•˜ê³  ì‹¶ì€ ì˜ˆì•½ì„ ì„ íƒí•´ì£¼ëŠ” í•¨ìˆ˜
+void saveToFile(medical *m[],int cnt); // ë°ì´í„°ë¥¼ íŒŒì¼ì— ì €ì¥í•´ì£¼ëŠ” í•¨ìˆ˜
+int loadFile(medical *m[]); // íŒŒì¼ì—ì„œ ì €ì¥ëœ ë°ì´í„°ë¥¼ ì½ì–´ì˜¤ëŠ” í•¨ìˆ˜
+void searchPatient(medical *m[],int cnt); // ì˜ˆì•½ëœ í™˜ì ì´ë¦„ìœ¼ë¡œ ì˜ˆì•½ ë‚´ì—­ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜ 
+void searchByDate(medical *m[],int cnt); // íŠ¹ì • ì¼ìì— ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
+void searchByDepartment(medical *m[],int cnt); // íŠ¹ì • ì§„ë£Œê³¼ì— ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
+void searchByProf(medical *m[],int cnt); // íŠ¹ì • êµìˆ˜ì—ê²Œ ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
  
 ```
 <br/>
   
-## ? ÆÀ¿ø ¼Ò°³ ¹× ¿ªÇÒ
+## ? íŒ€ì› ì†Œê°œ ë° ì—­í• 
 ### Member
-####  ? ¹Ú¿øÁø ?github ÁÖ¼Ò: https://github.com/Wonjin-david
-####  ? ·ùÁö¿¬ ?github ÁÖ¼Ò: https://github.com/jeeyunryu
+####  ? ë°•ì›ì§„ ?github ì£¼ì†Œ: https://github.com/Wonjin-david
+####  ? ë¥˜ì§€ì—° ?github ì£¼ì†Œ: https://github.com/jeeyunryu
 <table>
   <tr>
     <td style = "width: 50%;">
       <img src="https://user-images.githubusercontent.com/126576242/236665332-2f80adb4-9b32-4a7e-bc93-aca8e4597df4.png" style = "width : 20vw"/>
     </td>
     <td style = "width: 50%;">
-      <img src="https://user-images.githubusercontent.com/126576242/236667615-241d0d4c-c3d8-43c2-b798-d49e5f2f970b.png" style = "width : 20vw"/>
+      <img src="https://user-images.githubusercontent.com/68150327/236711722-93e72af3-cfe7-4390-b30f-a77bc7c388b1.jpg" style = "width : 20vw"/>
     </td>
   </tr>
   <tr>
-    <td><b> ¹Ú¿øÁø </b></td>
-    <td><b> ·ùÁö¿¬ </b></td>
+    <td><b> ë°•ì›ì§„ </b></td>
+    <td><b> ë¥˜ì§€ì—° </b></td>
   </tr>
   <tr>
-    <td><b> ÇÑµ¿´ëÇĞ±³ 20ÇĞ¹ø Àü»ê½ÉÈ­ </b></td>
-    <td><b> ÇÑµ¿´ëÇĞ±³ 20ÇĞ¹ø Àü»ê½ÉÈ­ </b></td>
+    <td><b> í•œë™ëŒ€í•™êµ 20í•™ë²ˆ ì „ì‚°ì‹¬í™” </b></td>
+    <td><b> í•œë™ëŒ€í•™êµ 20í•™ë²ˆ ì „ì‚°ì‹¬í™” </b></td>
   </tr>
   <tr>
     <td>
-      ¿ªÇÒ1<br>
-      ¿ªÇÒ1<br>
-      ¿ªÇÒ1<br>
-      ¿ªÇÒ1<br>
+      ì—­í• 1<br>
+      ì—­í• 1<br>
+      ì—­í• 1<br>
+      ì—­í• 1<br>
     </td>
     <td>
-      ¿ªÇÒ1<br>
-      ¿ªÇÒ1<br>
-      ¿ªÇÒ1<br>
-      ¿ªÇÒ1<br>
+      ì—­í• 1<br>
+      ì—­í• 1<br>
+      ì—­í• 1<br>
+      ì—­í• 1<br>
     </td>
   </tr>
 </table>
