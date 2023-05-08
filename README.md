@@ -71,16 +71,20 @@ void searchByProf(medical *m[],int cnt); // 특정 교수에게 예약된 예약
   </tr>
   <tr>
     <td>
-      역할1<br>
-      역할1<br>
-      역할1<br>
-      역할1<br>
+      <b>:bell:역할</b><br>
+      - CRUD 중 add,read <br>
+      - File io 구현<br>
+      - searchByDepartment, searchByProf 구현<br>
+      - README.md 주로 담당하여 구현<br>
+      미완성<br>
     </td>
     <td>
-      역할1<br>
-      역할1<br>
-      역할1<br>
-      역할1<br>
+      <b>:bell:역할</b><br>
+      - CRUD 중 update, delete<br>
+      - main, menu 구현<br>
+      - searchByPatient, searchByDate 구현<br>
+      - Wiki 주로 담당하여 구현<br>
+      미완성 <br>
     </td>
   </tr>
 </table>
