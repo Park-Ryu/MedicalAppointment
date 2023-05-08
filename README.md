@@ -2,7 +2,7 @@
 <h1>Medical Appointment system</h1>
 <p align="center"><img src="https://user-images.githubusercontent.com/126576242/236667615-241d0d4c-c3d8-43c2-b798-d49e5f2f970b.png" height="300px" width="300px"></p>
   
-### ? Experience a convenient medical appointment system!
+### :hospital: Experience a convenient medical appointment system!
 <br/>
 <img src="https://img.shields.io/badge/HTML-E34F26?style=flat&logo=HTML5&logoColor=white"/>
 <img src="https://img.shields.io/badge/C-00CCFF?style=flat&logo=C&logoColor=white"/>
@@ -11,7 +11,7 @@
 
 </div>
 
-## ?H-medic에 대한 설명
+## :rocket:H-medic에 대한 설명
 ### Medical Appointment System
 ?<b> 다양한 진료과와 교수가 존재하는 종합 병원의 진료 예약을 관리해주는 시스템입니다. 진료 예약, 수정, 취소는 물론이며,
   
@@ -19,7 +19,7 @@
  
 <br/>
 
-## ?H-Medic CRUD & Function
+## :rocket:H-Medic CRUD & Function
 ### 코드 및 기능
 ```c
 typedef struct{
@@ -48,17 +48,17 @@ void searchByProf(medical *m[],int cnt); // 특정 교수에게 예약된 예약 목록을 출�
 ```
 <br/>
   
-## ? 팀원 소개 및 역할
+## :rocket: 팀원 소개 및 역할
 ### Member
-####  ? 박원진 ?github 주소: https://github.com/Wonjin-david
-####  ? 류지연 ?github 주소: https://github.com/jeeyunryu
+####  :boy: 박원진 ?github 주소: https://github.com/Wonjin-david
+####  :girl: 류지연 ?github 주소: https://github.com/jeeyunryu
 <table>
   <tr>
     <td style = "width: 50%;">
       <img src="https://user-images.githubusercontent.com/126576242/236665332-2f80adb4-9b32-4a7e-bc93-aca8e4597df4.png" style = "width : 20vw"/>
     </td>
     <td style = "width: 50%;">
-      <img src="https://user-images.githubusercontent.com/126576242/236667615-241d0d4c-c3d8-43c2-b798-d49e5f2f970b.png" style = "width : 20vw"/>
+      <img src="https://user-images.githubusercontent.com/68150327/236711722-93e72af3-cfe7-4390-b30f-a77bc7c388b1.jpg" style = "width : 20vw"/>
     </td>
   </tr>
   <tr>
