@@ -55,10 +55,13 @@ void searchByProf(medical *m[],int cnt); // 특정 교수에게 예약된 예약
 <table>
   <tr>
     <td style = "width: 50%;">
-      <img src="https://user-images.githubusercontent.com/126576242/236665332-2f80adb4-9b32-4a7e-bc93-aca8e4597df4.png" style = "width : 20vw"/>
+      <img src="https://user-images.githubusercontent.com/126576242/236665332-2f80adb4-9b32-4a7e-bc93-aca8e4597df4.png" style = "width : 21vw"/>
     </td>
     <td style = "width: 50%;">
+      <!--
       <img src="https://user-images.githubusercontent.com/68150327/236711722-93e72af3-cfe7-4390-b30f-a77bc7c388b1.jpg" style = "width : 20vw"/>
+      -->
+      <img src="https://user-images.githubusercontent.com/126576242/236716605-589fe838-c4e8-4f1b-acf2-5eb59d240ae5.jpg" style = "width : 20vw"/>
     </td>
   </tr>
   <tr>
