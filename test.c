@@ -38,30 +38,56 @@ void proflist(char s[]){
 }
 
 int addAppointment(medical *m){
+    int check=0;
+
     printf("**************************************************\n");
     printf("환자명은? ");
     fflush(stdin);
     fgets(m->patientName,sizeof(m->patientName),stdin);
     m->patientName[strlen(m->patientName)-1]='\0';
 
-    printf("희망 예약일자는(eg. 20230505(2023년 5월 5일))? ");
-    fflush(stdin);
-    fgets(m->date,sizeof(m->date),stdin);
-    m->date[strlen(m->date)-1]='\0';
+    do{
+        if(check!=0) printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
+        
+        printf("희망 예약일자는(eg. 20230505(2023년 5월 5일))? ");
+        fflush(stdin);
+        fgets(m->date,sizeof(m->date),stdin);
+        m->date[strlen(m->date)-1]='\0';
+        check++;
+    }while (strlen(m->date)!=8);
+    
+    check=0;
+    do{
+        if(check!=0) printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
+        
+        printf("생년월일은(eg. 20230505(2023년 5월 5일))? ");
+        fflush(stdin);
+        fgets(m->birth,sizeof(m->birth),stdin);
+        m->birth[strlen(m->birth)-1]='\0';
+        check++;
+    }while (strlen(m->birth)!=8);
 
-    printf("생년월일은(eg. 20230505(2023년 5월 5일))? ");
-    fflush(stdin);
-    fgets(m->birth,sizeof(m->birth),stdin);
-    m->birth[strlen(m->birth)-1]='\0';
+    check=0;
+    do{
+        if(check!=0) printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
 
-    printf("성별은(여자 : F, 남자 : M)? ");
-    scanf("%c",&m->gender);
+        fflush(stdin);
+        printf("성별은(여자 : F, 남자 : M)? ");
+        scanf("%c",&m->gender);
+        check++;
+    }while(m->gender!='M' && m->gender!='F');
 
-    printf("\n[■■■■ 외과 ■■■■ 내과 ■■■■ 이비인후과 ■■■■ 신경과 ■■■■ 산부인과 ■■■■ 소아과 ■■■■ 안과 ■■■■]\n");
-    printf("희망진료과는? ");
-    fflush(stdin);
-    fgets(m->medicDept,sizeof(m->medicDept),stdin);
-    m->medicDept[strlen(m->medicDept)-1]='\0';
+    check=0;
+    do{
+        if(check!=0) printf("해당 과는 존재하지 않습니다...현재 존재하는 과를 선택하세요!\n\n");
+
+        printf("\n[■■■■ 외과 ■■■■ 내과 ■■■■ 이비인후과 ■■■■ 신경과 ■■■■ 산부인과 ■■■■ 소아과 ■■■■ 안과 ■■■■]\n");
+        printf("희망진료과는? ");
+        fflush(stdin);
+        fgets(m->medicDept,sizeof(m->medicDept),stdin);
+        m->medicDept[strlen(m->medicDept)-1]='\0';
+        check++;
+    }while(strstr(m->medicDept,"외과")==NULL && strstr(m->medicDept,"내과")==NULL && strstr(m->medicDept,"이비인후과")==NULL && strstr(m->medicDept,"신경과")==NULL && strstr(m->medicDept,"산부인과")==NULL && strstr(m->medicDept,"소아과")==NULL && strstr(m->medicDept,"안과")==NULL);
 
     printf("\n");
     proflist(m->medicDept);
@@ -78,14 +104,72 @@ int addAppointment(medical *m){
     return 1;
 }
 void readAppointment(medical m){
-    printf("%s  %s  %s  %c  %s  %s  %s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
+    printf("  %s      %s      %s       %c           %s           %s  %s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
 }
-void listAppointment(medical *m[],int cnt);
+void listAppointment(medical *m[],int cnt){
+    printf("========================Make an medical appointment with H-medic========================\n");
+    printf("========================================================================================\n");
+    printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
+    printf("----------------------------------------------------------------------------------------\n");
+    for(int i=0;i<cnt;i++){
+        if(m[i]==NULL) continue;
+
+        printf("%2d ",i+1);
+        readAppointment(*m[i]);
+    }
+    printf("\n");
+}
 int updateAppointment(medical *m);
 int deleteAppointment(medical *m);
 int selectAppointment(medical *m[],int cnt);
-void saveToFile(medical *m[],int cnt);
-int loadFile(medical *m[]);
+void saveToFile(medical *m[],int cnt){
+    FILE *fp;
+    fp=fopen("medical.txt","wt");
+    for(int i=0;i<cnt;i++){
+        if(m[i]==NULL) continue;
+        fprintf(fp,"%s,%s,%s,%c %s,%s,%s\n",m[i]->patientName,m[i]->date,m[i]->birth,m[i]->gender,m[i]->medicDept,m[i]->prof,m[i]->memo);
+    }
+    fclose(fp);
+    printf("저장됨!\n");
+}
+int loadFile(medical *m[]){
+    FILE *fp;
+    fp=fopen("medical.txt","rt");
+    char trash;
+    int i=0;
+    if(fp==NULL){
+        printf("=> 파일 없음!\n");
+        return 0;
+    }
+    for(i=0;i<100;i++){
+        m[i]=(medical*)malloc(sizeof(medical));
+        fscanf(fp,"%[^,]s",m[i]->patientName);
+        if(feof(fp)){
+            break;
+        }
+
+        fscanf(fp,"%c",&trash);
+        fscanf(fp,"%[^,]s",m[i]->date);
+        fscanf(fp,"%c",&trash);
+        fscanf(fp,"%[^,]s",m[i]->birth);
+        fscanf(fp,"%c",&trash);
+        fscanf(fp,"%c",&m[i]->gender);
+        fscanf(fp,"%c",&trash);
+        fscanf(fp,"%[^,]s",m[i]->medicDept);
+        fscanf(fp,"%c",&trash);
+        fscanf(fp,"%[^,]s",m[i]->prof);
+        fscanf(fp,"%c",&trash);
+        fscanf(fp,"%[^,]s",m[i]->memo);
+    
+        fscanf(fp,"%c",&trash);
+        printf("여기는 옴7  %d\n",i);
+    }
+    fclose(fp);
+    printf("=> 로딩 성공!\n");
+
+    return i;
+}
+
 void searchPatient(medical *m[],int cnt);
 void searchByDate(medical *m[],int cnt);
 void searchByDepartment(medical *m[],int cnt);
@@ -112,7 +196,24 @@ int selectMenu(){
 }
 
 int main(){
-    medical m1;
-    int n=addAppointment(&m1);
-    readAppointment(m1);
+    medical *m1[100];
+    int menu;
+    int cnt=0,ind=0;
+    cnt+=loadFile(m1);
+    ind=cnt;
+    if(cnt!=0)listAppointment(m1,cnt);
+    while(1){
+        printf("실행(1) 종료(0) :");
+        scanf("%d",&menu);
+        if(menu==0){
+            saveToFile(m1,cnt);
+            break;
+        }
+
+        m1[ind]=(medical*)malloc(sizeof(medical));
+        cnt+=addAppointment(m1[ind++]);
+        listAppointment(m1,cnt);
+
+        printf("\n");
+    }
 }
