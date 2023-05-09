@@ -23,13 +23,13 @@
 ### 코드 및 기능
 ```c
 typedef struct{
-    char patientName[15];
-    char date[10];
-    char birth[10];
-    char gender;
-    char medicDept[15];
-    char prof[15];
-    char memo[50];
+    char patientName[15]; //(예약자)환자 이름
+    char date[10]; //예약 날짜
+    char birth[10];// 생년월일
+    char gender; //성별
+    char medicDept[15]; //희망하는 진료과
+    char prof[15]; //희망하는 교수
+    char memo[50]; //특이 사항
 }medical;
 
 int addAppointment(medical *m); // 진료 예약을 추가하는 함수
