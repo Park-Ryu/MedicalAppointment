@@ -112,7 +112,10 @@ void listAppointment(medical *m[],int cnt){
     printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
     printf("----------------------------------------------------------------------------------------\n");
     for(int i=0;i<cnt;i++){
-        if(m[i]==NULL) continue;
+        if(m[i]==NULL){
+            printf("실행됨!\n");
+            continue;
+        }
 
         printf("%2d ",i+1);
         readAppointment(*m[i]);
@@ -122,7 +125,7 @@ void listAppointment(medical *m[],int cnt){
 int updateAppointment(medical *m);
 int deleteAppointment(medical *m);
 int selectAppointment(medical *m[],int cnt);
-void saveToFile(medical *m[],int cnt){
+void saveToFile(medical *m[],int cnt){ //특이사항 없으면 'x' 파일에 저장하도록 수정하기
     FILE *fp;
     fp=fopen("medical.txt","wt");
     for(int i=0;i<cnt;i++){
@@ -159,10 +162,9 @@ int loadFile(medical *m[]){
         fscanf(fp,"%c",&trash);
         fscanf(fp,"%[^,]s",m[i]->prof);
         fscanf(fp,"%c",&trash);
-        fscanf(fp,"%[^,]s",m[i]->memo);
+        fscanf(fp,"%[^\n]s",m[i]->memo);
     
         fscanf(fp,"%c",&trash);
-        printf("여기는 옴7  %d\n",i);
     }
     fclose(fp);
     printf("=> 로딩 성공!\n");
@@ -172,7 +174,37 @@ int loadFile(medical *m[]){
 
 void searchPatient(medical *m[],int cnt);
 void searchByDate(medical *m[],int cnt);
-void searchByDepartment(medical *m[],int cnt);
+
+void searchByDepartment(medical *m[],int cnt){
+    char deptName[15];
+    int check=0;
+    do{
+    if(check!=0) printf("해당 과는 존재하지 않습니다...현재 존재하는 과를 선택하세요!\n\n");
+
+    printf("\n[■■■■ 외과 ■■■■ 내과 ■■■■ 이비인후과 ■■■■ 신경과 ■■■■ 산부인과 ■■■■ 소아과 ■■■■ 안과 ■■■■]\n");
+    printf("예약 내역을 검색하고 싶은 진료과는? ");
+    fflush(stdin);
+    fgets(deptName,sizeof(deptName),stdin);
+    deptName[strlen(deptName)-1]='\0';
+    check++;
+    }while(strstr(deptName,"외과")==NULL && strstr(deptName,"내과")==NULL && strstr(deptName,"이비인후과")==NULL && strstr(deptName,"신경과")==NULL && strstr(deptName,"산부인과")==NULL && strstr(deptName,"소아과")==NULL && strstr(deptName,"안과")==NULL);
+
+    printf("\n\n검색을 요청하신 진료과는 '%s'입니다!\n\n",deptName);
+
+    printf("========================Make an medical appointment with H-medic========================\n");
+    printf("========================================================================================\n");
+    printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
+    printf("----------------------------------------------------------------------------------------\n");
+    for(int i=0;i<cnt;i++){
+        if(strstr(m[i]->medicDept,deptName)){
+            if(m[i]==NULL) continue;
+
+            printf("%d",i+1);
+            readAppointment(*m[i]);
+        }
+    }
+
+}
 void searchByProf(medical *m[],int cnt);
 
 int selectMenu(){
@@ -203,17 +235,28 @@ int main(){
     ind=cnt;
     if(cnt!=0)listAppointment(m1,cnt);
     while(1){
-        printf("실행(1) 종료(0) :");
+        printf("실행(1) 종료(0) 저장(5) 검색(8):");
         scanf("%d",&menu);
         if(menu==0){
+            printf("=> 종료\n");
+            break;
+        }
+
+        if(menu==5){
             saveToFile(m1,cnt);
             break;
+        }
+        
+        if(menu==8){
+            searchByDepartment(m1,cnt);
+            continue;
         }
 
         m1[ind]=(medical*)malloc(sizeof(medical));
         cnt+=addAppointment(m1[ind++]);
         listAppointment(m1,cnt);
 
+        
         printf("\n");
     }
 }
