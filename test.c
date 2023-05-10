@@ -104,7 +104,7 @@ int addAppointment(medical *m){
     return 1;
 }
 void readAppointment(medical m){
-    printf("  %s      %s      %s       %c           %s           %s  %s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
+    printf("  %s      %s      %s       %c           %s           %s  z%s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
 }
 void listAppointment(medical *m[],int cnt){
     printf("========================Make an medical appointment with H-medic========================\n");
