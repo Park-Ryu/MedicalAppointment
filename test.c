@@ -4,8 +4,8 @@
 
 typedef struct{
     char patientName[15];
-    char date[10];
-    char birth[10];
+    char date[11];
+    char birth[11];
     char gender;
     char medicDept[15];
     char prof[15];
@@ -33,8 +33,7 @@ void proflist(char s[]){
             printf("선택한 진료과는 %s입니다.\n",s);
             break;
         }
-    }
-    
+    }   
 }
 
 int addAppointment(medical *m){
@@ -46,6 +45,8 @@ int addAppointment(medical *m){
     fgets(m->patientName,sizeof(m->patientName),stdin);
     m->patientName[strlen(m->patientName)-1]='\0';
 
+    //이미 존재하는 예약자(searchByPatient로 구현)면 return -1; 한 다음 main에서 바로 update함수 호출될 수 있게 구현
+
     do{
         if(check!=0) printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
         
@@ -54,6 +55,7 @@ int addAppointment(medical *m){
         fgets(m->date,sizeof(m->date),stdin);
         m->date[strlen(m->date)-1]='\0';
         check++;
+        printf("date: %s\n",m->date);
     }while (strlen(m->date)!=8);
     
     check=0;
@@ -104,7 +106,7 @@ int addAppointment(medical *m){
     return 1;
 }
 void readAppointment(medical m){
-    printf("  %s      %s      %s       %c           %s           %s  z%s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
+    printf("  %s      %s      %s       %c           %s           %s  %s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
 }
 void listAppointment(medical *m[],int cnt){
     printf("========================Make an medical appointment with H-medic========================\n");
