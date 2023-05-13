@@ -64,6 +64,7 @@ void searchByProf(medical *m[],int cnt); // 특정 교수에게 예약된 예약
 
   
 <br/>  
+
 ## :rocket: 팀원 소개 및 역할
 ### Member
 ####  :boy: 박원진 :star: github 주소: https://github.com/Wonjin-david
