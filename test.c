@@ -20,43 +20,67 @@ int deleteAppointment(medical *m); // 예약된 진료 예약 중 특정 예약을 삭제해주는
 int selectAppointment(medical *m[],int cnt); // 예약된 진료 예약 중에 수정,삭제하고 싶은 예약을 선택해주는 함수
 void saveToFile(medical *m[],int cnt); // 데이터를 파일에 저장해주는 함수
 int loadFile(medical *m[]); // 파일에서 저장된 데이터를 읽어오는 함수
-void searchPatient(medical *m[],int cnt); // 예약된 환자 이름으로 예약 내역을 출력해주는 함수 
+int searchPatient(medical *m[],int cnt,char Pname[],int menu_check); // 예약된 환자 이름으로 예약 내역을 출력해주는 함수 
 void searchByDate(medical *m[],int cnt); // 특정 일자에 예약된 예약 목록을 출력해주는 함수
 void searchByDepartment(medical *m[],int cnt); // 특정 진료과에 예약된 예약 목록을 출력해주는 함수
 void searchByProf(medical *m[],int cnt); // 특정 교수에게 예약된 예약 목록을 출력해주는 함수
+const char* proflist(char s[]){
+    int check=0,i,j;
+    char select_prof[15];
+    char *deptList[7]={"외과","내과","이비인후과","신경과","산부인과","소아과","안과"};
+    char *prof[7][5]={
+        {"A외과","B외과","C외과","D외과","E외과"},
+        {"내과A","내과B","내과C","내과D","내과E"},
+        {"이비인후과A","이비인후과B","이비인후과C","이비인후과D","이비인후과E"},
+        {"신경과A","신경과B","신경과C","신경과D","신경과E"},
+        {"산부인과A","산부인과B","산부인과C","산부인과D","산부인과E"},
+        {"소아과A","소아과B","소아과C","소아과D","소아과E"},
+        {"안과A","안과B","안과C","안과D","안과E"}
+    };
 
-void proflist(char s[]){
-    char deptList[7][20]={{"외과"},{"내과"},{"이비인후과"},{"신경과"},{"산부인과"},{"소아과"},{"안과"}};
-
-    for(int i=0;i<7;i++){
+    for(i=0;i<7;i++){
         if(strstr(s,deptList[i])){
-            printf("선택한 진료과는 %s입니다.\n",s);
+            printf("************************************************\n");
+            printf("선택하신 진료과: %s\n",s);
+            printf("************************************************\n");
+            printf(">>>>>>>>>>>>>해당 진료과 교수 리스트<<<<<<<<<<<<<\n");
+            for(j=0;j<5;j++){
+                printf("=> %s\n",prof[i][j]);
+            }
             break;
         }
-    }   
+    }
+
+    while(1){
+        if(check!=0) printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
+        printf("희망 교수는? ");
+        fflush(stdin);
+        fgets(select_prof,sizeof(select_prof),stdin);
+        select_prof[strlen(select_prof)-1]='\0';
+        check++;
+
+        for(int k=0;k<5;k++){
+            if(strstr(prof[i][k],select_prof)) return prof[i][k];
+        }
+    }
 }
 
 int addAppointment(medical *m){
     int check=0;
-
-    printf("**************************************************\n");
-    printf("환자명은? ");
-    fflush(stdin);
-    fgets(m->patientName,sizeof(m->patientName),stdin);
-    m->patientName[strlen(m->patientName)-1]='\0';
-
-    //이미 존재하는 예약자(searchByPatient로 구현)면 return -1; 한 다음 main에서 바로 update함수 호출될 수 있게 구현
+    char prof_name[15];
 
     do{
-        if(check!=0) printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
+        if(check!=0){
+            printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
+        }
         
         printf("희망 예약일자는(eg. 20230505(2023년 5월 5일))? ");
         fflush(stdin);
         fgets(m->date,sizeof(m->date),stdin);
         m->date[strlen(m->date)-1]='\0';
         check++;
-        printf("date: %s\n",m->date);
     }while (strlen(m->date)!=8);
+
     
     check=0;
     do{
@@ -90,13 +114,8 @@ int addAppointment(medical *m){
         m->medicDept[strlen(m->medicDept)-1]='\0';
         check++;
     }while(strstr(m->medicDept,"외과")==NULL && strstr(m->medicDept,"내과")==NULL && strstr(m->medicDept,"이비인후과")==NULL && strstr(m->medicDept,"신경과")==NULL && strstr(m->medicDept,"산부인과")==NULL && strstr(m->medicDept,"소아과")==NULL && strstr(m->medicDept,"안과")==NULL);
-
-    printf("\n");
-    proflist(m->medicDept);
-    printf("희망 교수는? ");
-    fflush(stdin);
-    fgets(m->prof,sizeof(m->prof),stdin);
-    m->prof[strlen(m->prof)-1]='\0';
+    
+    strcpy(m->prof,proflist(m->medicDept));
 
     printf("특이사항은(현재 증상)? ");
     fflush(stdin);
@@ -127,7 +146,7 @@ void listAppointment(medical *m[],int cnt){
 int updateAppointment(medical *m);
 int deleteAppointment(medical *m);
 int selectAppointment(medical *m[],int cnt);
-void saveToFile(medical *m[],int cnt){ //특이사항 없으면 'x' 파일에 저장하도록 수정하기
+void saveToFile(medical *m[],int cnt){ 
     FILE *fp;
     fp=fopen("medical.txt","wt");
     for(int i=0;i<cnt;i++){
@@ -174,21 +193,38 @@ int loadFile(medical *m[]){
     return i;
 }
 
-void searchPatient(medical *m[],int cnt);
+int searchPatient(medical *m[],int cnt,char Pname[],int menu_check){
+    int scnt=0;
+    if(menu_check!=2) ("No  Song    Singer      Album      genre      Length\n=============================================\n");
+    for(int i=0;i<cnt;i++){
+        if(strstr(m[i]->patientName,Pname)){
+            if(menu_check==2) return -1;
+            printf("%2d",i+1);
+            readAppointment(*m[i]);
+            scnt++;
+        }
+    }
+
+    if(scnt==0){
+        if(menu_check!=2) printf("찾으시는 예약 환자가 없습니다...\n");
+        return 0;
+    }
+    return 1;
+}
 void searchByDate(medical *m[],int cnt);
 
 void searchByDepartment(medical *m[],int cnt){
     char deptName[15];
     int check=0;
     do{
-    if(check!=0) printf("해당 과는 존재하지 않습니다...현재 존재하는 과를 선택하세요!\n\n");
+        if(check!=0) printf("해당 과는 존재하지 않습니다...현재 존재하는 과를 선택하세요!\n\n");
 
-    printf("\n[■■■■ 외과 ■■■■ 내과 ■■■■ 이비인후과 ■■■■ 신경과 ■■■■ 산부인과 ■■■■ 소아과 ■■■■ 안과 ■■■■]\n");
-    printf("예약 내역을 검색하고 싶은 진료과는? ");
-    fflush(stdin);
-    fgets(deptName,sizeof(deptName),stdin);
-    deptName[strlen(deptName)-1]='\0';
-    check++;
+        printf("\n[■■■■ 외과 ■■■■ 내과 ■■■■ 이비인후과 ■■■■ 신경과 ■■■■ 산부인과 ■■■■ 소아과 ■■■■ 안과 ■■■■]\n");
+        printf("예약 내역을 검색하고 싶은 진료과는? ");
+        fflush(stdin);
+        fgets(deptName,sizeof(deptName),stdin);
+        deptName[strlen(deptName)-1]='\0';
+        check++;
     }while(strstr(deptName,"외과")==NULL && strstr(deptName,"내과")==NULL && strstr(deptName,"이비인후과")==NULL && strstr(deptName,"신경과")==NULL && strstr(deptName,"산부인과")==NULL && strstr(deptName,"소아과")==NULL && strstr(deptName,"안과")==NULL);
 
     printf("\n\n검색을 요청하신 진료과는 '%s'입니다!\n\n",deptName);
@@ -231,34 +267,82 @@ int selectMenu(){
 
 int main(){
     medical *m1[100];
-    int menu;
-    int cnt=0,ind=0;
+    int menu=0;
+    int cnt=0,ind=0,dup_check=0,no=0;
+    char name[15];
     cnt+=loadFile(m1);
     ind=cnt;
     if(cnt!=0)listAppointment(m1,cnt);
     while(1){
-        printf("실행(1) 종료(0) 저장(5) 검색(8):");
-        scanf("%d",&menu);
-        if(menu==0){
-            printf("=> 종료\n");
-            break;
-        }
-
-        if(menu==5){
-            saveToFile(m1,cnt);
-            break;
-        }
+        menu=selectMenu();
         
-        if(menu==8){
-            searchByDepartment(m1,cnt);
+        if(cnt==0 &&(menu==1 || menu==3 || menu==4 || menu==5 || menu==6 || menu==7 || menu==8 || menu==9)){
+            printf("저장된 데이터가 없습니다...다시 입력하세요!\n\n");
             continue;
         }
-
-        m1[ind]=(medical*)malloc(sizeof(medical));
-        cnt+=addAppointment(m1[ind++]);
-        listAppointment(m1,cnt);
-
-        
+        if(menu==1){
+            listAppointment(m1,cnt);
+        }
+        else if(menu==2){
+            printf("**************************************************\n");
+            printf("환자명은? ");
+            fflush(stdin);
+            fgets(name,sizeof(name),stdin);
+            name[strlen(name)-1]='\0';
+            dup_check=searchPatient(m1,cnt,name,menu);
+            
+            if(dup_check==-1){
+                printf("이미 예약이 존재합니다...'예약 수정'을 이용해주세요! \n\n");
+                continue;
+            }
+            m1[ind]=(medical*)malloc(sizeof(medical));
+            strcpy(m1[ind]->patientName,name);
+            cnt+=addAppointment(m1[ind++]);
+        }
+        // else if(menu==3){
+        //     int udt_ck;
+        //     no=selectAppointment(m1,cnt);
+        //     if(no==0){
+        //         printf("=> 취소됨!\n");
+        //         continue;
+        //     }
+        //     udt_ck=updateAppointment(m1[no-1]);
+        //     if(udt_ck==1)printf("=> 수정됨!\n");
+        // }
+        // else if(menu==4){
+        //     int dlt_ck;
+        //     no=selectAppointment(m1,cnt);
+        //     if(no==0){
+        //         printf("=> 취소됨!\n");
+        //         continue;
+        //     }
+        //     dlt_ck=deleteAppointment(m1[no-1]);
+        //     if(dlt_ck==1){
+        //         printf("=> 삭제됨!\n");
+        //     }
+        // }
+        else if(menu==5){
+            saveToFile(m1,cnt);
+        }else if(menu==6){
+            int search;
+            printf("검색하고 싶은 예약 환자명은? ");
+            fflush(stdin);
+            fgets(name,sizeof(name),stdin);
+            name[strlen(name)-1]='\0';
+            search=searchPatient(m1,cnt,name,menu);
+            if(search==1) printf("\n검색 완료\n");
+        }else if(menu==7){
+            //searchByDate(m1,cnt);
+        }else if(menu==8){
+            searchByDepartment(m1,cnt);
+        }else if(menu==9){
+            //searchByProf(m1,cnt);
+        }else if(menu==0) break;
+        else{
+            printf("잘못 입력하셨습니다...다시 입력하세요!\n\n");
+            continue;
+        }
         printf("\n");
     }
 }
+
