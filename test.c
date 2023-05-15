@@ -124,8 +124,77 @@ void listAppointment(medical *m[],int cnt){
     }
     printf("\n");
 }
-int updateAppointment(medical *m);
-int deleteAppointment(medical *m);
+int updateAppointment(medical *m) {
+    int check=0;
+
+    printf("**************************************************\n");
+    printf("환자명은? ");
+    fflush(stdin);
+    fgets(m->patientName,sizeof(m->patientName),stdin);
+    m->patientName[strlen(m->patientName)-1]='\0';
+
+    do{
+        if(check!=0) printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
+        
+        printf("희망 예약일자는(eg. 20230505(2023년 5월 5일))? ");
+        fflush(stdin);
+        fgets(m->date,sizeof(m->date),stdin);
+        m->date[strlen(m->date)-1]='\0';
+        check++;
+        printf("date: %s\n",m->date);
+    }while (strlen(m->date)!=8);
+    
+    check=0;
+    do{
+        if(check!=0) printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
+        
+        printf("생년월일은(eg. 20230505(2023년 5월 5일))? ");
+        fflush(stdin);
+        fgets(m->birth,sizeof(m->birth),stdin);
+        m->birth[strlen(m->birth)-1]='\0';
+        check++;
+    }while (strlen(m->birth)!=8);
+
+    check=0;
+    do{
+        if(check!=0) printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
+
+        fflush(stdin);
+        printf("성별은(여자 : F, 남자 : M)? ");
+        scanf("%c",&m->gender);
+        check++;
+    }while(m->gender!='M' && m->gender!='F');
+
+    check=0;
+    do{
+        if(check!=0) printf("해당 과는 존재하지 않습니다...현재 존재하는 과를 선택하세요!\n\n");
+
+        printf("\n[■■■■ 외과 ■■■■ 내과 ■■■■ 이비인후과 ■■■■ 신경과 ■■■■ 산부인과 ■■■■ 소아과 ■■■■ 안과 ■■■■]\n");
+        printf("희망진료과는? ");
+        fflush(stdin);
+        fgets(m->medicDept,sizeof(m->medicDept),stdin);
+        m->medicDept[strlen(m->medicDept)-1]='\0';
+        check++;
+    }while(strstr(m->medicDept,"외과")==NULL && strstr(m->medicDept,"내과")==NULL && strstr(m->medicDept,"이비인후과")==NULL && strstr(m->medicDept,"신경과")==NULL && strstr(m->medicDept,"산부인과")==NULL && strstr(m->medicDept,"소아과")==NULL && strstr(m->medicDept,"안과")==NULL);
+
+    printf("\n");
+    proflist(m->medicDept);
+    printf("희망 교수는? ");
+    fflush(stdin);
+    fgets(m->prof,sizeof(m->prof),stdin);
+    m->prof[strlen(m->prof)-1]='\0';
+
+    printf("특이사항은(현재 증상)? ");
+    fflush(stdin);
+    fgets(m->memo,sizeof(m->memo),stdin);
+    m->memo[strlen(m->memo)-1]='\0';
+
+    return 1;
+}
+int deleteAppointment(medical *m) {
+    m = NULL;
+    free(m);
+}
 int selectAppointment(medical *m[],int cnt);
 void saveToFile(medical *m[],int cnt){ //특이사항 없으면 'x' 파일에 저장하도록 수정하기
     FILE *fp;
@@ -237,11 +306,39 @@ int main(){
     ind=cnt;
     if(cnt!=0)listAppointment(m1,cnt);
     while(1){
-        printf("실행(1) 종료(0) 저장(5) 검색(8):");
+        printf("실행(1) 종료(0) 수정(3) 삭제(4) 저장(5) 검색(8):");
         scanf("%d",&menu);
         if(menu==0){
             printf("=> 종료\n");
             break;
+        }
+        
+        if(menu == 3) {
+            int selecNum = 0;
+            listAppointment(m1, cnt);
+            printf("수정할 항목은? (0: 취소): ");
+            scanf("%d", &selecNum);
+            if (selecNum == 0) continue;
+            updateAppointment(m1[selecNum-1]);
+            continue;
+
+        }
+
+        if(menu == 4) {
+            int selecNum = 0;
+            int confirm = 0;
+            listAppointment(m1, cnt);
+            printf("삭제할 항목은? (0: 취소): ");
+            scanf("%d", &selecNum);
+            if (selecNum == 0) continue;
+            printf("삭제하시겠습니까? (삭제: 1): ");
+            scanf("%d", &confirm);
+            if (confirm) deleteAppointment(m1[selecNum-1]);
+            else continue;
+            cnt--;
+            ind--;
+            continue;
+
         }
 
         if(menu==5){
@@ -253,6 +350,8 @@ int main(){
             searchByDepartment(m1,cnt);
             continue;
         }
+        
+        
 
         m1[ind]=(medical*)malloc(sizeof(medical));
         cnt+=addAppointment(m1[ind++]);
