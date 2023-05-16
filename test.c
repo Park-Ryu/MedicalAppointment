@@ -276,7 +276,7 @@ int searchPatient(medical *m[],int cnt,char Pname[],int menu_check){
     return 1;
 }
 void searchByDate(medical *m[],int cnt) {
-    char date[8];
+    char date[10];
     int no = 0;
     while(1) {
         printf("찾아볼 예약 날짜는? (eg. 20230505(2023년 5월 5일)) : ");
@@ -289,11 +289,12 @@ void searchByDate(medical *m[],int cnt) {
     printf("----------------------------------------------------------------------------------------\n");
     
     for(int i = 0; i < cnt; i++) {
-        if(m[i] == NULL)continue;
+        if (m[i] == NULL) continue;
         if(strstr(m[i]->date, date)) {
             no++;
-            printf("%2d", no);
+            printf("%2d", i+1);
             readAppointment(*m[i]);
+            
             
         }
     }
@@ -330,7 +331,30 @@ void searchByDepartment(medical *m[],int cnt){
     }
 
 }
-void searchByProf(medical *m[],int cnt);
+void searchByProf(medical *m[],int cnt) {
+    char prof[10];
+    int no = 0;
+    
+    printf("검색할 교수님: ");
+    scanf("%s", prof);
+
+    
+    printf("========================================================================================\n");
+    printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
+    printf("----------------------------------------------------------------------------------------\n");
+    
+    for(int i = 0; i < cnt; i++) {
+        if (m[i] == NULL) continue;
+        if(strstr(m[i]->prof, prof)) {
+            no++;
+            printf("%2d", i+1);
+            readAppointment(*m[i]);
+            
+            
+        }
+    }
+    if(no == 0) printf("찾으시는 교수님이 이 병원에 존재하지 않습니다.\n");
+}
 
 int selectMenu(){
     int menu;
@@ -467,7 +491,7 @@ int main(){
         }else if(menu==8){
             searchByDepartment(m1,cnt);
         }else if(menu==9){
-            //searchByProf(m1,cnt);
+            searchByProf(m1,cnt);
         }else if(menu==0) break;
         // else{
         //     printf("잘못 입력하셨습니다...다시 입력하세요!\n\n");
