@@ -275,6 +275,19 @@ int searchPatient(medical *m[],int cnt,char Pname[],int menu_check){
     }
     return 1;
 }
+int checkDup(medical *m[], int cnt, char name[]) {
+    
+    int no = 0;
+    for(int i = 0; i < cnt; i++) {
+        if (m[i] == NULL) continue;
+        if(m[i]->date == name) {
+            no++;
+        }
+    }
+    if(no == 1) return -1;
+    else return 1;
+
+}
 void searchByDate(medical *m[],int cnt) {
     char date[10];
     int no = 0;
@@ -400,7 +413,8 @@ int main(){
             fflush(stdin);
             fgets(name,sizeof(name),stdin);
             name[strlen(name)-1]='\0';
-            dup_check=searchPatient(m1,cnt,name,menu);
+            //dup_check=searchPatient(m1,cnt,name,menu);
+            dup_check = checkDup(m1, cnt, name);
             
             if(dup_check==-1){
                 printf("이미 예약이 존재합니다...'예약 수정'을 이용해주세요! \n\n");
