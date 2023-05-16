@@ -55,15 +55,16 @@ void searchByProf(medical *m[],int cnt); // 특정 교수에게 예약된 예약
 ```
 <br/>
 
-## 🚀 개발 환경 및 언어
-🔥 <b> C언어 </b>
+## :rocket: 개발 환경 및 언어
+:fire: <b> C언어 </b>
 
-🔥 <b> Visual Studio Code </b>
+:fire: <b> Visual Studio Code </b>
 
-🔥 <b> Github </b>
+:fire: <b> Github </b>
 
   
 <br/>  
+
 ## :rocket: 팀원 소개 및 역할
 ### Member
 ####  :boy: 박원진 :star: github 주소: https://github.com/Wonjin-david
