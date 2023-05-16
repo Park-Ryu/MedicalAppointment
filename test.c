@@ -291,8 +291,10 @@ void searchByDate(medical *m[],int cnt) {
     for(int i = 0; i < cnt; i++) {
         if(m[i] == NULL)continue;
         if(strstr(m[i]->date, date)) {
-            readAppointment(*m[i]);
             no++;
+            printf("%2d", no);
+            readAppointment(*m[i]);
+            
         }
     }
     if(no == 0) printf("찾으시는 날짜에 예정된 예약이 없습니다.\n");
