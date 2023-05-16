@@ -93,7 +93,7 @@ void searchByProf(medical *m[],int cnt); // 특정 교수에게 예약된 예약
       - File io 구현<br>
       - searchByDepartment, searchByProf 구현<br>
       - README.md 주로 담당하여 구현<br>
-      미완성<br>
+      <br>
     </td>
     <td>
       <b>:bell:역할</b><br>
@@ -101,7 +101,7 @@ void searchByProf(medical *m[],int cnt); // 특정 교수에게 예약된 예약
       - main, menu 구현<br>
       - searchByPatient, searchByDate 구현<br>
       - Wiki 주로 담당하여 구현<br>
-      미완성 <br>
+      <br>
     </td>
   </tr>
 </table>
