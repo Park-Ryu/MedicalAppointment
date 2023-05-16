@@ -16,7 +16,7 @@ int addAppointment(medical *m); // 진료 예약을 추가하는 함수
 void readAppointment(medical m); // 하나의 예약된 진료 예약을 출력해주는 함수 
 void listAppointment(medical *m[],int cnt); // 예약된 진료 예약 목록을 보여주는 함수
 int updateAppointment(medical *m); // 예약된 진료 예약 중 특정 예약을 수정해주는 함수
-int deleteAppointment(medical *m); // 예약된 진료 예약 중 특정 예약을 삭제해주는 함수
+int deleteAppointment(medical *m[]); // 예약된 진료 예약 중 특정 예약을 삭제해주는 함수
 int selectAppointment(medical *m[],int cnt); // 예약된 진료 예약 중에 수정,삭제하고 싶은 예약을 선택해주는 함수
 void saveToFile(medical *m[],int cnt); // 데이터를 파일에 저장해주는 함수
 int loadFile(medical *m[]); // 파일에서 저장된 데이터를 읽어오는 함수
@@ -128,17 +128,18 @@ void readAppointment(medical m){
     printf("  %s      %s      %s       %c           %s           %s  %s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
 }
 void listAppointment(medical *m[],int cnt){
+    int no = 0;
     printf("========================Make an medical appointment with H-medic========================\n");
     printf("========================================================================================\n");
     printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
     printf("----------------------------------------------------------------------------------------\n");
     for(int i=0;i<cnt;i++){
         if(m[i]==NULL){
-            printf("실행됨!\n");
+            //printf("실행됨!\n");
             continue;
         }
-
-        printf("%2d ",i+1);
+        no++;
+        printf("%2d ",no);
         readAppointment(*m[i]);
     }
     printf("\n");
@@ -205,9 +206,8 @@ int updateAppointment(medical *m) {
 
     return 1;
 }
-int deleteAppointment(medical *m) {
-    m = NULL;
-    free(m);
+int deleteAppointment(medical *m[]) {
+    *m = NULL;
 }
 int selectAppointment(medical *m[],int cnt);
 void saveToFile(medical *m[],int cnt){ 
@@ -275,7 +275,28 @@ int searchPatient(medical *m[],int cnt,char Pname[],int menu_check){
     }
     return 1;
 }
-void searchByDate(medical *m[],int cnt);
+void searchByDate(medical *m[],int cnt) {
+    char date[8];
+    int no = 0;
+    while(1) {
+        printf("찾아볼 예약 날짜는? (eg. 20230505(2023년 5월 5일)) : ");
+        scanf("%s", date);
+        if(strlen(date) == 8) break;
+        printf("잘못입력하셨습니다...형식에 맞게 제대로 입력하세요!\n\n");
+    }
+    printf("========================================================================================\n");
+    printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
+    printf("----------------------------------------------------------------------------------------\n");
+    
+    for(int i = 0; i < cnt; i++) {
+        if(m[i] == NULL)continue;
+        if(strstr(m[i]->date, date)) {
+            readAppointment(*m[i]);
+            no++;
+        }
+    }
+    if(no == 0) printf("찾으시는 날짜에 예정된 예약이 없습니다.\n");
+}
 
 void searchByDepartment(medical *m[],int cnt){
     char deptName[15];
@@ -392,7 +413,7 @@ int main(){
             scanf("%d", &selecNum);
             if (selecNum == 0) continue;
             int n = 0;
-            for (int i = 0; i < ind; i++) {
+            for (int i = 0; i < cnt; i++) {
                 if(m1[i] == NULL) continue;
                 n++;
                 if(n == selecNum) {
@@ -415,17 +436,16 @@ int main(){
             scanf("%d", &check);
             if (check) {
                 int n = 0;
-                for (int i = 0; i < ind; i++) {
+                for (int i = 0; i < cnt; i++) {
                     if(m1[i] == NULL) continue;
                     n++;
                     if(n == selecNum) {
-                        deleteAppointment(m1[i]);
+                        deleteAppointment(&m1[i]);
                         break;
                     }
                 }
             }
             else continue;
-            cnt--;
             continue;
 
         }
@@ -441,7 +461,7 @@ int main(){
             search=searchPatient(m1,cnt,name,menu);
             if(search==1) printf("\n검색 완료\n");
         }else if(menu==7){
-            //searchByDate(m1,cnt);
+            searchByDate(m1,cnt);
         }else if(menu==8){
             searchByDepartment(m1,cnt);
         }else if(menu==9){
