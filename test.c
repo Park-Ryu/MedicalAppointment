@@ -280,12 +280,12 @@ int checkDup(medical *m[], int cnt, char name[]) {
     int no = 0;
     for(int i = 0; i < cnt; i++) {
         if (m[i] == NULL) continue;
-        if(m[i]->date == name) {
-            no++;
+        if(strcmp(m[i]->date, name) == 0) {
+            return -1;
+            break;
         }
     }
-    if(no == 1) return -1;
-    else return 1;
+    return 1;
 
 }
 void searchByDate(medical *m[],int cnt) {
