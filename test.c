@@ -294,6 +294,7 @@ int loadFile(medical *m[]){
 int searchByPatient(medical *m[],int cnt,char Pname[],int menu_check){
     int no=0;
     int scnt=0;
+    
     if(menu_check!=2){
         printf("========================Make an medical appointment with H-medic========================\n");
         printf("========================================================================================\n");
@@ -348,7 +349,7 @@ void searchByDate(medical *m[],int cnt) {
 
 void searchByDepartment(medical *m[],int cnt){
     char deptName[15];
-    int i=0,check=0,print_count=0,no=0;
+    int i=0,check=0,print_count=0;
     do{
         if(check!=0) printf("해당 과는 존재하지 않습니다...현재 존재하는 과를 선택하세요!\n\n");
 
@@ -368,10 +369,9 @@ void searchByDepartment(medical *m[],int cnt){
     printf("----------------------------------------------------------------------------------------\n");
     for(i=0;i<cnt;i++){
         if(m[i]==NULL) continue;
-        no++;
         if(strstr(m[i]->medicDept,deptName)){
 
-            printf("%d",no+1);
+            printf("%d",print_count+1);
             readAppointment(*m[i]);
             print_count++;
         }
@@ -394,9 +394,9 @@ void searchByProf(medical *m[],int cnt) {
     
     for(int i = 0; i < cnt; i++) {
         if (m[i] == NULL) continue;
-        if(strstr(m[i]->prof, prof)) {
+        if(strcmp(m[i]->prof, prof)==0) {
             no++;
-            printf("%2d", no+1);
+            printf("%2d", no);
             readAppointment(*m[i]);
         }
     }
@@ -488,6 +488,7 @@ int main(){
         else if(menu==5){
             saveToFile(m1,cnt);
         }else if(menu==6){
+            listAppointment(m1,cnt);
             int search;
             printf("검색하고 싶은 예약 환자명은? ");
             fflush(stdin);
@@ -496,6 +497,7 @@ int main(){
             search=searchByPatient(m1,cnt,name,menu);
             if(search==1) printf("\n=> 검색 완료\n");
         }else if(menu==7){
+            listAppointment(m1,cnt);
             searchByDate(m1,cnt);
         }else if(menu==8){
             searchByDepartment(m1,cnt);
