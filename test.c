@@ -16,7 +16,7 @@ int addAppointment(medical *m); // 진료 예약을 추가하는 함수
 void readAppointment(medical m); // 하나의 예약된 진료 예약을 출력해주는 함수 
 void listAppointment(medical *m[],int cnt); // 예약된 진료 예약 목록을 보여주는 함수
 int updateAppointment(medical *m); // 예약된 진료 예약 중 특정 예약을 수정해주는 함수
-int deleteAppointment(medical **m); // 예약된 진료 예약 중 특정 예약을 삭제해주는 함수
+int deleteAppointment(medical **m, int no, int cnt); // 예약된 진료 예약 중 특정 예약을 삭제해주는 함수
 int selectAppointment(medical *m[],int cnt); // 예약된 진료 예약 중에 수정,삭제하고 싶은 예약을 선택해주는 함수
 void saveToFile(medical *m[],int cnt); // 데이터를 파일에 저장해주는 함수
 int loadFile(medical *m[]); // 파일에서 저장된 데이터를 읽어오는 함수
@@ -228,24 +228,26 @@ int updateAppointment(medical *m) {
 
     return 1;
 }
-int deleteAppointment(medical **m) {
+int deleteAppointment(medical **m, int no, int cnt) {
     int dlt_ok;
     printf("정말로 삭제하시겠습니까(삭제:1 취소:0)? ");
     scanf("%d",&dlt_ok);
     if(dlt_ok!=1) return 0;
 
-    // int n;
-    // for(int i = 0; i < cnt; i++) {
-    //     if((m[i]) == NULL) continue;
-    //     n++;
-    //     if()
-    //     free(m[i]);
-    //     m[i] = NULL;
+    int n = 0;
+    for(int i = 0; i < cnt; i++) {
+        if((m[i]) == NULL) continue;
+        n++;
+        if(n == no) {
+            free(m[i]);
+            m[i] = NULL;
+        }
         
-    // }
+        
+    }
 
-    if((*m)==NULL) free((*m));
-    (*m)=NULL;
+    // if((*m)==NULL) free((*m));
+    // (*m)=NULL;
 
     return 1;
 }
@@ -489,7 +491,7 @@ int main(){
                 printf("=> 취소됨!\n");
                 continue;
             }
-            dlt_ck=deleteAppointment(&m1[no-1]);
+            dlt_ck=deleteAppointment(&m1[no-1], no, cnt);
             if(dlt_ck==1){
                 printf("=> 삭제됨!\n");
             }else{
