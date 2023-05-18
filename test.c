@@ -152,17 +152,13 @@ void readAppointment(medical m){
     printf("  %s      %s      %s       %c           %s           %s  %s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
 }
 void listAppointment(medical *m[],int cnt){
-    int no = 0;
     printf("========================Make an medical appointment with H-medic========================\n");
     printf("========================================================================================\n");
     printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
     printf("----------------------------------------------------------------------------------------\n");
     for(int i=0;i<cnt;i++){
-        if(m[i]==NULL){
-            continue;
-        }
-        no++;
-        printf("%2d ",no);
+        if(m[i]==NULL) continue;
+        printf("%2d ",i+1);
         readAppointment(*m[i]);
     }
     printf("\n");
@@ -308,7 +304,9 @@ int loadFile(medical *m[]){
 }
 
 int searchByPatient(medical *m[],int cnt,char Pname[],int menu_check){
+    int no=0;
     int scnt=0;
+    
     if(menu_check!=2){
         printf("========================Make an medical appointment with H-medic========================\n");
         printf("========================================================================================\n");
@@ -317,11 +315,12 @@ int searchByPatient(medical *m[],int cnt,char Pname[],int menu_check){
     }
     for(int i=0;i<cnt;i++){
         if(m[i]==NULL) continue;
+        no++;
         if(menu_check==2){
             if(strcmp(m[i]->patientName,Pname)==0) return -1;
         }else{
             if(strstr(m[i]->patientName,Pname)){
-            printf("%2d",i+1);
+            printf("%2d",no+1);
             readAppointment(*m[i]);
             scnt++;
         }
@@ -351,7 +350,7 @@ void searchByDate(medical *m[],int cnt) {
         if (m[i] == NULL) continue;
         if(strstr(m[i]->date, date)) {
             no++;
-            printf("%2d", i+1);
+            printf("%2d", no+1);
             readAppointment(*m[i]);
             
             
@@ -384,7 +383,7 @@ void searchByDepartment(medical *m[],int cnt){
         if(m[i]==NULL) continue;
         if(strstr(m[i]->medicDept,deptName)){
 
-            printf("%d",i+1);
+            printf("%d",print_count+1);
             readAppointment(*m[i]);
             print_count++;
         }
@@ -407,9 +406,9 @@ void searchByProf(medical *m[],int cnt) {
     
     for(int i = 0; i < cnt; i++) {
         if (m[i] == NULL) continue;
-        if(strstr(m[i]->prof, prof)) {
+        if(strcmp(m[i]->prof, prof)==0) {
             no++;
-            printf("%2d", i+1);
+            printf("%2d", no);
             readAppointment(*m[i]);
         }
     }
@@ -501,6 +500,7 @@ int main(){
         else if(menu==5){
             saveToFile(m1,cnt);
         }else if(menu==6){
+            listAppointment(m1,cnt);
             int search;
             printf("검색하고 싶은 예약 환자명은? ");
             fflush(stdin);
@@ -509,6 +509,7 @@ int main(){
             search=searchByPatient(m1,cnt,name,menu);
             if(search==1) printf("\n=> 검색 완료\n");
         }else if(menu==7){
+            listAppointment(m1,cnt);
             searchByDate(m1,cnt);
         }else if(menu==8){
             searchByDepartment(m1,cnt);
