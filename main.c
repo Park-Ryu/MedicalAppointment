@@ -16,7 +16,7 @@ int main(){
         menu=selectMenu();
         
         if(cnt==0 &&(menu==1 || menu==3 || menu==4 || menu==5 || menu==6 || menu==7 || menu==8 || menu==9)){
-            printf("ì €ìž¥ëœ ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤...ë‹¤ì‹œ ìž…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("ÀúÀåµÈ µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù...´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
             continue;
         }
         if(menu==1){
@@ -24,14 +24,14 @@ int main(){
         }
         else if(menu==2){
             printf("**************************************************\n");
-            printf("í™˜ìžëª…ì€? ");
+            printf("È¯ÀÚ¸íÀº? ");
             fflush(stdin);
             fgets(name,sizeof(name),stdin);
             name[strlen(name)-1]='\0';
             dup_check=searchByPatient(m1,cnt,name,menu);
             
             if(dup_check==-1){
-                printf("ì´ë¯¸ ì˜ˆì•½ì´ ì¡´ìž¬í•©ë‹ˆë‹¤...'ì˜ˆì•½ ìˆ˜ì •'ì„ ì´ìš©í•´ì£¼ì„¸ìš”! \n\n");
+                printf("ÀÌ¹Ì ¿¹¾àÀÌ Á¸ÀçÇÕ´Ï´Ù...'¿¹¾à ¼öÁ¤'À» ÀÌ¿ëÇØÁÖ¼¼¿ä! \n\n");
                 continue;
             }
             m1[ind]=(medical*)malloc(sizeof(medical));
@@ -42,36 +42,36 @@ int main(){
             int udt_ck;
             no=selectAppointment(m1,cnt);
             if(no==0){
-                printf("=> ì·¨ì†Œë¨!\n");
+                printf("=> Ãë¼ÒµÊ!\n");
                 continue;
             }
             udt_ck=updateAppointment(m1[no-1]);
-            if(udt_ck==1)printf("=> ìˆ˜ì •ë¨!\n");
+            if(udt_ck==1)printf("=> ¼öÁ¤µÊ!\n");
         }
         else if(menu==4){
             int dlt_ck;
             no=selectAppointment(m1,cnt);
             if(no==0){
-                printf("=> ì·¨ì†Œë¨!\n");
+                printf("=> Ãë¼ÒµÊ!\n");
                 continue;
             }
             dlt_ck=deleteAppointment(&m1[no-1]);
             if(dlt_ck==1){
-                printf("=> ì‚­ì œë¨!\n");
+                printf("=> »èÁ¦µÊ!\n");
             }else{
-                printf("=> ì·¨ì†Œë¨!\n");
+                printf("=> Ãë¼ÒµÊ!\n");
             }
         }
         else if(menu==5){
             saveToFile(m1,cnt);
         }else if(menu==6){
             int search;
-            printf("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ ì˜ˆì•½ í™˜ìžëª…ì€? ");
+            printf("°Ë»öÇÏ°í ½ÍÀº ¿¹¾à È¯ÀÚ¸íÀº? ");
             fflush(stdin);
             fgets(name,sizeof(name),stdin);
             name[strlen(name)-1]='\0';
             search=searchByPatient(m1,cnt,name,menu);
-            if(search==1) printf("\n=> ê²€ìƒ‰ ì™„ë£Œ\n");
+            if(search==1) printf("\n=> °Ë»ö ¿Ï·á\n");
         }else if(menu==7){
             searchByDate(m1,cnt);
         }else if(menu==8){
@@ -80,7 +80,7 @@ int main(){
             searchByProf(m1,cnt);
         }else if(menu==0) break;
         else{
-            printf("ìž˜ëª» ìž…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...ë‹¤ì‹œ ìž…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
             continue;
         }
         printf("\n");

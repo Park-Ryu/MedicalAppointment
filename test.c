@@ -234,6 +234,16 @@ int deleteAppointment(medical **m) {
     scanf("%d",&dlt_ok);
     if(dlt_ok!=1) return 0;
 
+    // int n;
+    // for(int i = 0; i < cnt; i++) {
+    //     if((m[i]) == NULL) continue;
+    //     n++;
+    //     if()
+    //     free(m[i]);
+    //     m[i] = NULL;
+        
+    // }
+
     if((*m)==NULL) free((*m));
     (*m)=NULL;
 
@@ -506,4 +516,3 @@ int main(){
         printf("\n");
     }
 }
-

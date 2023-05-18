@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "medic.h": "c",
+        "stdio.h": "c"
+    }
+}
