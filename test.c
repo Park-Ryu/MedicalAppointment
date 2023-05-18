@@ -152,13 +152,16 @@ void readAppointment(medical m){
     printf("  %s      %s      %s       %c           %s           %s  %s\n",m.patientName,m.date,m.birth,m.gender,m.medicDept,m.prof,m.memo);
 }
 void listAppointment(medical *m[],int cnt){
+    int no = 0;
     printf("========================Make an medical appointment with H-medic========================\n");
     printf("========================================================================================\n");
     printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
     printf("----------------------------------------------------------------------------------------\n");
     for(int i=0;i<cnt;i++){
         if(m[i]==NULL) continue;
-        printf("%2d ",i+1);
+        no++;
+        // printf("%2d ",i+1);
+        printf("%2d ",no);
         readAppointment(*m[i]);
     }
     printf("\n");
