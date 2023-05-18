@@ -65,6 +65,7 @@ int main(){
         else if(menu==5){
             saveToFile(m1,cnt);
         }else if(menu==6){
+            listAppointment(m1,cnt);
             int search;
             printf("검색하고 싶은 예약 환자명은? ");
             fflush(stdin);
@@ -73,6 +74,7 @@ int main(){
             search=searchByPatient(m1,cnt,name,menu);
             if(search==1) printf("\n=> 검색 완료\n");
         }else if(menu==7){
+            listAppointment(m1,cnt);
             searchByDate(m1,cnt);
         }else if(menu==8){
             searchByDepartment(m1,cnt);
