@@ -276,7 +276,7 @@ void saveToFile(medical *m[], int cnt)
         fprintf(fp, "%s,%s,%s,%c %s,%s,%s\n", m[i]->patientName, m[i]->date, m[i]->birth, m[i]->gender, m[i]->medicDept, m[i]->prof, m[i]->memo);
     }
     fclose(fp);
-    printf("저장됨!\n");
+    printf("=============저장되었습니다 ^0^=============\n");
 }
 int loadFile(medical *m[])
 {
@@ -345,7 +345,7 @@ int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check)
         {
             if (strstr(m[i]->patientName, Pname))
             {
-                printf("%2d", no + 1);
+                printf("%2d", no);
                 readAppointment(*m[i]);
                 scnt++;
             }
@@ -383,7 +383,7 @@ void searchByDate(medical *m[], int cnt)
         if (strstr(m[i]->date, date))
         {
             no++;
-            printf("%2d", no + 1);
+            printf("%2d", no);
             readAppointment(*m[i]);
         }
     }
