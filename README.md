@@ -67,8 +67,8 @@ void searchByProf(medical *m[],int cnt); // 특정 교수에게 예약된 예약
 
 ## :rocket: 팀원 소개 및 역할
 ### Member
-####  :boy: 박원진 :star: github 주소: https://github.com/Wonjin-david
-####  :girl: 류지연 :star: github 주소: https://github.com/jeeyunryu
+####  :boy: 박원진 :star: github 주소: [박원진의 github](https://github.com/Wonjin-david)
+####  :girl: 류지연 :star: github 주소: [류지연의 github](https://github.com/jeeyunryu)
 <table>
   <tr>
     <td style = "width: 50%;">
