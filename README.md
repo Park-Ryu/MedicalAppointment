@@ -51,6 +51,7 @@ int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check); // 예
 void searchByDate(medical *m[], int cnt);                                 // 특정 일자에 예약된 예약 목록을 출력해주는 함수
 void searchByDepartment(medical *m[], int cnt);                           // 특정 진료과에 예약된 예약 목록을 출력해주는 함수
 void searchByProf(medical *m[], int cnt);                                 // 특정 교수에게 예약된 예약 목록을 출력해주는 함수
+const char *proflist(char s[]);                                           // 교수 목록을 출력해주는 함수
  
 ```
 <br/>
