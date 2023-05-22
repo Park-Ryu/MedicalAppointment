@@ -11,10 +11,11 @@ typedef struct{
 }medical;
 
 int addAppointment(medical *m);                                           // 진료 예약을 추가하는 함수
+int addAppointment(medical *m);                                           // 진료 예약을 추가하는 함수
 void readAppointment(medical m);                                          // 하나의 예약된 진료 예약을 출력해주는 함수
 void listAppointment(medical *m[], int cnt);                              // 예약된 진료 예약 목록을 보여주는 함수
 int updateAppointment(medical *m);                                        // 예약된 진료 예약 중 특정 예약을 수정해주는 함수
-int deleteAppointment(medical **m, int cnt, int no);                                       // 예약된 진료 예약 중 특정 예약을 삭제해주는 함수
+int deleteAppointment(medical **m, int cnt, int no);                      // 예약된 진료 예약 중 특정 예약을 삭제해주는 함수
 int selectAppointment(medical *m[], int cnt);                             // 예약된 진료 예약 중에 수정,삭제하고 싶은 예약을 선택해주는 함수
 void saveToFile(medical *m[], int cnt);                                   // 데이터를 파일에 저장해주는 함수
 int loadFile(medical *m[]);                                               // 파일에서 저장된 데이터를 읽어오는 함수
