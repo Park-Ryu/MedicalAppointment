@@ -11,53 +11,54 @@
 
 </div>
 
-## :rocket:H-medic¿¡ ´ëÇÑ ¼Ò°³ ¹× ±â´É ¼³¸í
+## :rocket:H-medicì— ëŒ€í•œ ì†Œê°œ ë° ê¸°ëŠ¥ ì„¤ëª…
 ### Medical Appointment System
-:point_right:<b> ´Ù¾çÇÑ Áø·á°ú¿Í ±³¼ö°¡ Á¸ÀçÇÏ´Â Á¾ÇÕ º´¿øÀÇ Áø·á ¿¹¾àÀ» °ü¸®ÇØÁÖ´Â ½Ã½ºÅÛÀÔ´Ï´Ù. Áø·á ¿¹¾à, ¼öÁ¤, Ãë¼Ò´Â ¹°·ĞÀÌ¸ç,
+:point_right:<b> ë‹¤ì–‘í•œ ì§„ë£Œê³¼ì™€ êµìˆ˜ê°€ ì¡´ì¬í•˜ëŠ” ì¢…í•© ë³‘ì›ì˜ ì§„ë£Œ ì˜ˆì•½ì„ ê´€ë¦¬í•´ì£¼ëŠ” ì‹œìŠ¤í…œì…ë‹ˆë‹¤. ì§„ë£Œ ì˜ˆì•½, ìˆ˜ì •, ì·¨ì†ŒëŠ” ë¬¼ë¡ ì´ë©°,
   
-   º´¿ø¿¡¼­µµ ´õ Æí¸®ÇÏ°Ô Áø·á ¿¹¾àÀ» °ü¸®ÇÒ ¼ö ÀÖµµ·Ï ±³¼öº°, ÀÏÀÚº°, Áø·á°úº° ¿¹¾à ÇöÈ²±îÁö ¾Ë ¼ö ÀÖ½À´Ï´Ù. </b>
+   ë³‘ì›ì—ì„œë„ ë” í¸ë¦¬í•˜ê²Œ ì§„ë£Œ ì˜ˆì•½ì„ ê´€ë¦¬í•  ìˆ˜ ìˆë„ë¡ êµìˆ˜ë³„, ì¼ìë³„, ì§„ë£Œê³¼ë³„ ì˜ˆì•½ í˜„í™©ê¹Œì§€ ì•Œ ìˆ˜ ìˆìŠµë‹ˆë‹¤. </b>
   
   <br/>
-  <b> Áø·á°ú: ¿Ü°ú, ³»°ú, ÀÌºñÀÎÈÄ°ú, ½Å°æ°ú, »êºÎÀÎ°ú, ¼Ò¾Æ°ú, ¾È°ú </b>
+  <b> ì§„ë£Œê³¼: ì™¸ê³¼, ë‚´ê³¼, ì´ë¹„ì¸í›„ê³¼, ì‹ ê²½ê³¼, ì‚°ë¶€ì¸ê³¼, ì†Œì•„ê³¼, ì•ˆê³¼ </b>
     
-    ? ¿øÇÏ´Â Áø·á°ú, ¿øÇÏ´Â ±³¼ö¸¦ ³¯Â¥±îÁö ¼±ÅÃÇÏ¿© °æÇèÇØº¸¼¼¿ä~ ?
+    ? ì›í•˜ëŠ” ì§„ë£Œê³¼, ì›í•˜ëŠ” êµìˆ˜ë¥¼ ë‚ ì§œê¹Œì§€ ì„ íƒí•˜ì—¬ ê²½í—˜í•´ë³´ì„¸ìš”~ ?
                                                 
  
 <br/>
   
   
 ## :rocket:H-Medic CRUD & Function
-### ÄÚµå ¹× ±â´É
+### ì½”ë“œ ë° ê¸°ëŠ¥
 ```c
 typedef struct{
-    char patientName[15]; //(¿¹¾àÀÚ)È¯ÀÚ ÀÌ¸§
-    char date[10]; //¿¹¾à ³¯Â¥
-    char birth[10];// »ı³â¿ùÀÏ
-    char gender; //¼ºº°
-    char medicDept[15]; //Èñ¸ÁÇÏ´Â Áø·á°ú
-    char prof[15]; //Èñ¸ÁÇÏ´Â ±³¼ö
-    char memo[50]; //Æ¯ÀÌ »çÇ×
+    char patientName[15]; //(ì˜ˆì•½ì)í™˜ì ì´ë¦„
+    char date[10]; //ì˜ˆì•½ ë‚ ì§œ
+    char birth[10];// ìƒë…„ì›”ì¼
+    char gender; //ì„±ë³„
+    char medicDept[15]; //í¬ë§í•˜ëŠ” ì§„ë£Œê³¼
+    char prof[15]; //í¬ë§í•˜ëŠ” êµìˆ˜
+    char memo[50]; //íŠ¹ì´ ì‚¬í•­
 }medical;
 
-int addAppointment(medical *m);                                           // Áø·á ¿¹¾àÀ» Ãß°¡ÇÏ´Â ÇÔ¼ö
-void readAppointment(medical m);                                          // ÇÏ³ªÀÇ ¿¹¾àµÈ Áø·á ¿¹¾àÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
-void listAppointment(medical *m[], int cnt);                              // ¿¹¾àµÈ Áø·á ¿¹¾à ¸ñ·ÏÀ» º¸¿©ÁÖ´Â ÇÔ¼ö
-int updateAppointment(medical *m);                                        // ¿¹¾àµÈ Áø·á ¿¹¾à Áß Æ¯Á¤ ¿¹¾àÀ» ¼öÁ¤ÇØÁÖ´Â ÇÔ¼ö
-int deleteAppointment(medical **m);                                       // ¿¹¾àµÈ Áø·á ¿¹¾à Áß Æ¯Á¤ ¿¹¾àÀ» »èÁ¦ÇØÁÖ´Â ÇÔ¼ö
-int selectAppointment(medical *m[], int cnt);                             // ¿¹¾àµÈ Áø·á ¿¹¾à Áß¿¡ ¼öÁ¤,»èÁ¦ÇÏ°í ½ÍÀº ¿¹¾àÀ» ¼±ÅÃÇØÁÖ´Â ÇÔ¼ö
-void saveToFile(medical *m[], int cnt);                                   // µ¥ÀÌÅÍ¸¦ ÆÄÀÏ¿¡ ÀúÀåÇØÁÖ´Â ÇÔ¼ö
-int loadFile(medical *m[]);                                               // ÆÄÀÏ¿¡¼­ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ ÀĞ¾î¿À´Â ÇÔ¼ö
-int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check); // ¿¹¾àµÈ È¯ÀÚ ÀÌ¸§À¸·Î ¿¹¾à ³»¿ªÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
-void searchByDate(medical *m[], int cnt);                                 // Æ¯Á¤ ÀÏÀÚ¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
-void searchByDepartment(medical *m[], int cnt);                           // Æ¯Á¤ Áø·á°ú¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
-void searchByProf(medical *m[], int cnt);                                 // Æ¯Á¤ ±³¼ö¿¡°Ô ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
-const char *proflist(char s[]);                                           // ±³¼ö ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+int addAppointment(medical *m);                                           // ì§„ë£Œ ì˜ˆì•½ì„ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
+int addAppointment(medical *m);                                           // ì§„ë£Œ ì˜ˆì•½ì„ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
+void readAppointment(medical m);                                          // í•˜ë‚˜ì˜ ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
+void listAppointment(medical *m[], int cnt);                              // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ëª©ë¡ì„ ë³´ì—¬ì£¼ëŠ” í•¨ìˆ˜
+int updateAppointment(medical *m);                                        // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ íŠ¹ì • ì˜ˆì•½ì„ ìˆ˜ì •í•´ì£¼ëŠ” í•¨ìˆ˜
+int deleteAppointment(medical **m, int cnt, int no);                      // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ íŠ¹ì • ì˜ˆì•½ì„ ì‚­ì œí•´ì£¼ëŠ” í•¨ìˆ˜
+int selectAppointment(medical *m[], int cnt);                             // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ì— ìˆ˜ì •,ì‚­ì œí•˜ê³  ì‹¶ì€ ì˜ˆì•½ì„ ì„ íƒí•´ì£¼ëŠ” í•¨ìˆ˜
+void saveToFile(medical *m[], int cnt);                                   // ë°ì´í„°ë¥¼ íŒŒì¼ì— ì €ì¥í•´ì£¼ëŠ” í•¨ìˆ˜
+int loadFile(medical *m[]);                                               // íŒŒì¼ì—ì„œ ì €ì¥ëœ ë°ì´í„°ë¥¼ ì½ì–´ì˜¤ëŠ” í•¨ìˆ˜
+int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check); // ì˜ˆì•½ëœ í™˜ì ì´ë¦„ìœ¼ë¡œ ì˜ˆì•½ ë‚´ì—­ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
+void searchByDate(medical *m[], int cnt);                                 // íŠ¹ì • ì¼ìì— ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
+void searchByDepartment(medical *m[], int cnt);                           // íŠ¹ì • ì§„ë£Œê³¼ì— ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
+void searchByProf(medical *m[], int cnt);                                 // íŠ¹ì • êµìˆ˜ì—ê²Œ ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
+const char *proflist(char s[]);                                           // êµìˆ˜ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
  
 ```
 <br/>
 
-## :rocket: °³¹ß È¯°æ ¹× ¾ğ¾î
-:fire: <b> C¾ğ¾î </b>
+## :rocket: ê°œë°œ í™˜ê²½ ë° ì–¸ì–´
+:fire: <b> Cì–¸ì–´ </b>
 
 :fire: <b> Visual Studio Code </b>
 
@@ -66,10 +67,10 @@ const char *proflist(char s[]);                                           // ±³¼
   
 <br/>  
 
-## :rocket: ÆÀ¿ø ¼Ò°³ ¹× ¿ªÇÒ
+## :rocket: íŒ€ì› ì†Œê°œ ë° ì—­í• 
 ### Member
-####  :boy: ¹Ú¿øÁø :star: github ÁÖ¼Ò: [¹Ú¿øÁøÀÇ github](https://github.com/Wonjin-david)
-####  :girl: ·ùÁö¿¬ :star: github ÁÖ¼Ò: [·ùÁö¿¬ÀÇ github](https://github.com/jeeyunryu)
+####  :boy: ë°•ì›ì§„ :star: github ì£¼ì†Œ: [ë°•ì›ì§„ì˜ github](https://github.com/Wonjin-david)
+####  :girl: ë¥˜ì§€ì—° :star: github ì£¼ì†Œ: [ë¥˜ì§€ì—°ì˜ github](https://github.com/jeeyunryu)
 <table>
   <tr>
     <td style = "width: 50%;">
@@ -80,28 +81,28 @@ const char *proflist(char s[]);                                           // ±³¼
     </td>
   </tr>
   <tr>
-    <td><b> ¹Ú¿øÁø </b></td>
-    <td><b> ·ùÁö¿¬ </b></td>
+    <td><b> ë°•ì›ì§„ </b></td>
+    <td><b> ë¥˜ì§€ì—° </b></td>
   </tr>
   <tr>
-    <td><b> ÇÑµ¿´ëÇĞ±³ 20ÇĞ¹ø Àü»ê½ÉÈ­ </b></td>
-    <td><b> ÇÑµ¿´ëÇĞ±³ 20ÇĞ¹ø Àü»ê½ÉÈ­ </b></td>
+    <td><b> í•œë™ëŒ€í•™êµ 20í•™ë²ˆ ì „ì‚°ì‹¬í™” </b></td>
+    <td><b> í•œë™ëŒ€í•™êµ 20í•™ë²ˆ ì „ì‚°ì‹¬í™” </b></td>
   </tr>
   <tr>
     <td>
-      <b>:bell:¿ªÇÒ</b><br>
-      - CRUD Áß add,read <br>
-      - File io ±¸Çö<br>
-      - searchByDepartment, searchByProf ±¸Çö<br>
-      - README.md ÁÖ·Î ´ã´çÇÏ¿© ±¸Çö<br>
+      <b>:bell:ì—­í• </b><br>
+      - CRUD ì¤‘ add,read <br>
+      - File io êµ¬í˜„<br>
+      - searchByDepartment, searchByProf êµ¬í˜„<br>
+      - README.md ì£¼ë¡œ ë‹´ë‹¹í•˜ì—¬ êµ¬í˜„<br>
       <br>
     </td>
     <td>
-      <b>:bell:¿ªÇÒ</b><br>
-      - CRUD Áß update, delete<br>
-      - main, menu ±¸Çö<br>
-      - searchByPatient, searchByDate ±¸Çö<br>
-      - Wiki ÁÖ·Î ´ã´çÇÏ¿© ±¸Çö<br>
+      <b>:bell:ì—­í• </b><br>
+      - CRUD ì¤‘ update, delete<br>
+      - main, menu êµ¬í˜„<br>
+      - searchByPatient, searchByDate êµ¬í˜„<br>
+      - Wiki ì£¼ë¡œ ë‹´ë‹¹í•˜ì—¬ êµ¬í˜„<br>
       <br>
     </td>
   </tr>
