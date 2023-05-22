@@ -19,7 +19,7 @@ int selectMenu(){
     printf("|             0. 종료                      |\n");
     printf("===========================================\n\n");
 
-    printf("=> ????? ?????? ");
+    printf("=> 원하는 메뉴는? ");
     scanf("%d",&menu);
 
     return menu;
