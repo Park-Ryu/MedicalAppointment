@@ -13,33 +13,33 @@ typedef struct
     char memo[50];
 } medical;
 
-int addAppointment(medical *m);                                           // ì§„ë£Œ ì˜ˆì•½ì„ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
-void readAppointment(medical m);                                          // í•˜ë‚˜ì˜ ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-void listAppointment(medical *m[], int cnt);                              // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ëª©ë¡ì„ ë³´ì—¬ì£¼ëŠ” í•¨ìˆ˜
-int updateAppointment(medical *m);                                        // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ íŠ¹ì • ì˜ˆì•½ì„ ìˆ˜ì •í•´ì£¼ëŠ” í•¨ìˆ˜
-int deleteAppointment(medical **m);                                       // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ íŠ¹ì • ì˜ˆì•½ì„ ì‚­ì œí•´ì£¼ëŠ” í•¨ìˆ˜
-int selectAppointment(medical *m[], int cnt);                             // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ì— ìˆ˜ì •,ì‚­ì œí•˜ê³  ì‹¶ì€ ì˜ˆì•½ì„ ì„ íƒí•´ì£¼ëŠ” í•¨ìˆ˜
-void saveToFile(medical *m[], int cnt);                                   // ë°ì´í„°ë¥¼ íŒŒì¼ì— ì €ì¥í•´ì£¼ëŠ” í•¨ìˆ˜
-int loadFile(medical *m[]);                                               // íŒŒì¼ì—ì„œ ì €ì¥ëœ ë°ì´í„°ë¥¼ ì½ì–´ì˜¤ëŠ” í•¨ìˆ˜
-int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check); // ì˜ˆì•½ëœ í™˜ì ì´ë¦„ìœ¼ë¡œ ì˜ˆì•½ ë‚´ì—­ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-void searchByDate(medical *m[], int cnt);                                 // íŠ¹ì • ì¼ìì— ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-void searchByDepartment(medical *m[], int cnt);                           // íŠ¹ì • ì§„ë£Œê³¼ì— ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-void searchByProf(medical *m[], int cnt);                                 // íŠ¹ì • êµìˆ˜ì—ê²Œ ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-const char *proflist(char s[]);                                           // êµìˆ˜ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
+int addAppointment(medical *m);                                           // Áø·á ¿¹¾àÀ» Ãß°¡ÇÏ´Â ÇÔ¼ö
+void readAppointment(medical m);                                          // ÇÏ³ªÀÇ ¿¹¾àµÈ Áø·á ¿¹¾àÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+void listAppointment(medical *m[], int cnt);                              // ¿¹¾àµÈ Áø·á ¿¹¾à ¸ñ·ÏÀ» º¸¿©ÁÖ´Â ÇÔ¼ö
+int updateAppointment(medical *m);                                        // ¿¹¾àµÈ Áø·á ¿¹¾à Áß Æ¯Á¤ ¿¹¾àÀ» ¼öÁ¤ÇØÁÖ´Â ÇÔ¼ö
+int deleteAppointment(medical **m);                                       // ¿¹¾àµÈ Áø·á ¿¹¾à Áß Æ¯Á¤ ¿¹¾àÀ» »èÁ¦ÇØÁÖ´Â ÇÔ¼ö
+int selectAppointment(medical *m[], int cnt);                             // ¿¹¾àµÈ Áø·á ¿¹¾à Áß¿¡ ¼öÁ¤,»èÁ¦ÇÏ°í ½ÍÀº ¿¹¾àÀ» ¼±ÅÃÇØÁÖ´Â ÇÔ¼ö
+void saveToFile(medical *m[], int cnt);                                   // µ¥ÀÌÅÍ¸¦ ÆÄÀÏ¿¡ ÀúÀåÇØÁÖ´Â ÇÔ¼ö
+int loadFile(medical *m[]);                                               // ÆÄÀÏ¿¡¼­ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ ÀĞ¾î¿À´Â ÇÔ¼ö
+int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check); // ¿¹¾àµÈ È¯ÀÚ ÀÌ¸§À¸·Î ¿¹¾à ³»¿ªÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+void searchByDate(medical *m[], int cnt);                                 // Æ¯Á¤ ÀÏÀÚ¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+void searchByDepartment(medical *m[], int cnt);                           // Æ¯Á¤ Áø·á°ú¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+void searchByProf(medical *m[], int cnt);                                 // Æ¯Á¤ ±³¼ö¿¡°Ô ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+const char *proflist(char s[]);                                           // ±³¼ö ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
 
 const char *proflist(char s[])
 {
     int check = 0, i, j;
     char select_prof[15];
-    char *deptList[7] = {"ì™¸ê³¼", "ë‚´ê³¼", "ì´ë¹„ì¸í›„ê³¼", "ì‹ ê²½ê³¼", "ì‚°ë¶€ì¸ê³¼", "ì†Œì•„ê³¼", "ì•ˆê³¼"};
+    char *deptList[7] = {"¿Ü°ú", "³»°ú", "ÀÌºñÀÎÈÄ°ú", "½Å°æ°ú", "»êºÎÀÎ°ú", "¼Ò¾Æ°ú", "¾È°ú"};
     char *prof[7][5] = {
-        {"ì™¸ê³¼A", "ì™¸ê³¼B", "ì™¸ê³¼C", "ì™¸ê³¼D", "ì™¸ê³¼E"},
-        {"ë‚´ê³¼A", "ë‚´ê³¼B", "ë‚´ê³¼C", "ë‚´ê³¼D", "ë‚´ê³¼E"},
-        {"ì´ë¹„ì¸í›„ê³¼A", "ì´ë¹„ì¸í›„ê³¼B", "ì´ë¹„ì¸í›„ê³¼C", "ì´ë¹„ì¸í›„ê³¼D", "ì´ë¹„ì¸í›„ê³¼E"},
-        {"ì‹ ê²½ê³¼A", "ì‹ ê²½ê³¼B", "ì‹ ê²½ê³¼C", "ì‹ ê²½ê³¼D", "ì‹ ê²½ê³¼E"},
-        {"ì‚°ë¶€ì¸ê³¼A", "ì‚°ë¶€ì¸ê³¼B", "ì‚°ë¶€ì¸ê³¼C", "ì‚°ë¶€ì¸ê³¼D", "ì‚°ë¶€ì¸ê³¼E"},
-        {"ì†Œì•„ê³¼A", "ì†Œì•„ê³¼B", "ì†Œì•„ê³¼C", "ì†Œì•„ê³¼D", "ì†Œì•„ê³¼E"},
-        {"ì•ˆê³¼A", "ì•ˆê³¼B", "ì•ˆê³¼C", "ì•ˆê³¼D", "ì•ˆê³¼E"}};
+        {"¿Ü°úA", "¿Ü°úB", "¿Ü°úC", "¿Ü°úD", "¿Ü°úE"},
+        {"³»°úA", "³»°úB", "³»°úC", "³»°úD", "³»°úE"},
+        {"ÀÌºñÀÎÈÄ°úA", "ÀÌºñÀÎÈÄ°úB", "ÀÌºñÀÎÈÄ°úC", "ÀÌºñÀÎÈÄ°úD", "ÀÌºñÀÎÈÄ°úE"},
+        {"½Å°æ°úA", "½Å°æ°úB", "½Å°æ°úC", "½Å°æ°úD", "½Å°æ°úE"},
+        {"»êºÎÀÎ°úA", "»êºÎÀÎ°úB", "»êºÎÀÎ°úC", "»êºÎÀÎ°úD", "»êºÎÀÎ°úE"},
+        {"¼Ò¾Æ°úA", "¼Ò¾Æ°úB", "¼Ò¾Æ°úC", "¼Ò¾Æ°úD", "¼Ò¾Æ°úE"},
+        {"¾È°úA", "¾È°úB", "¾È°úC", "¾È°úD", "¾È°úE"}};
 
     if (strcmp(s, "find") == 0)
     {
@@ -62,9 +62,9 @@ const char *proflist(char s[])
             if (strstr(s, deptList[i]))
             {
                 printf("************************************************\n");
-                printf("ì„ íƒí•˜ì‹  ì§„ë£Œê³¼: %s\n", s);
+                printf("¼±ÅÃÇÏ½Å Áø·á°ú: %s\n", s);
                 printf("************************************************\n");
-                printf(">>>>>>>>>>>>>í•´ë‹¹ ì§„ë£Œê³¼ êµìˆ˜ ë¦¬ìŠ¤íŠ¸<<<<<<<<<<<<<\n");
+                printf(">>>>>>>>>>>>>ÇØ´ç Áø·á°ú ±³¼ö ¸®½ºÆ®<<<<<<<<<<<<<\n");
                 for (j = 0; j < 5; j++)
                 {
                     printf("=> %s\n", prof[i][j]);
@@ -77,11 +77,11 @@ const char *proflist(char s[])
     while (1)
     {
         if (check != 0)
-            printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...í˜•ì‹ì— ë§ê²Œ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...Çü½Ä¿¡ ¸Â°Ô Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
         if (strcmp(s, "find") == 0)
-            printf("ì°¾ìœ¼ì‹œëŠ” êµìˆ˜ë‹˜ì€? ");
+            printf("Ã£À¸½Ã´Â ±³¼ö´ÔÀº? ");
         else
-            printf("ì˜ˆì•½ í¬ë§ êµìˆ˜ë‹˜ì€? ");
+            printf("¿¹¾à Èñ¸Á ±³¼ö´ÔÀº? ");
         fflush(stdin);
         fgets(select_prof, sizeof(select_prof), stdin);
         select_prof[strlen(select_prof) - 1] = '\0';
@@ -118,10 +118,10 @@ int addAppointment(medical *m)
     {
         if (check != 0)
         {
-            printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...í˜•ì‹ì— ë§ê²Œ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...Çü½Ä¿¡ ¸Â°Ô Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
         }
 
-        printf("í¬ë§ ì˜ˆì•½ì¼ìëŠ”(eg. 20230505(2023ë…„ 5ì›” 5ì¼))? ");
+        printf("Èñ¸Á ¿¹¾àÀÏÀÚ´Â(eg. 20230505(2023³â 5¿ù 5ÀÏ))? ");
         fflush(stdin);
         fgets(m->date, sizeof(m->date), stdin);
         m->date[strlen(m->date) - 1] = '\0';
@@ -132,9 +132,9 @@ int addAppointment(medical *m)
     do
     {
         if (check != 0)
-            printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...í˜•ì‹ì— ë§ê²Œ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...Çü½Ä¿¡ ¸Â°Ô Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
 
-        printf("ìƒë…„ì›”ì¼ì€(eg. 20230505(2023ë…„ 5ì›” 5ì¼))? ");
+        printf("»ı³â¿ùÀÏÀº(eg. 20230505(2023³â 5¿ù 5ÀÏ))? ");
         fflush(stdin);
         fgets(m->birth, sizeof(m->birth), stdin);
         m->birth[strlen(m->birth) - 1] = '\0';
@@ -145,10 +145,10 @@ int addAppointment(medical *m)
     do
     {
         if (check != 0)
-            printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...í˜•ì‹ì— ë§ê²Œ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...Çü½Ä¿¡ ¸Â°Ô Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
 
         fflush(stdin);
-        printf("ì„±ë³„ì€(ì—¬ì : F, ë‚¨ì : M)? ");
+        printf("¼ºº°Àº(¿©ÀÚ : F, ³²ÀÚ : M)? ");
         scanf("%c", &m->gender);
         check++;
     } while (m->gender != 'M' && m->gender != 'F');
@@ -157,19 +157,19 @@ int addAppointment(medical *m)
     do
     {
         if (check != 0)
-            printf("í•´ë‹¹ ê³¼ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤...í˜„ì¬ ì¡´ì¬í•˜ëŠ” ê³¼ë¥¼ ì„ íƒí•˜ì„¸ìš”!\n\n");
+            printf("ÇØ´ç °ú´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù...ÇöÀç Á¸ÀçÇÏ´Â °ú¸¦ ¼±ÅÃÇÏ¼¼¿ä!\n\n");
 
-        printf("\n[â– â– â– â–  ì™¸ê³¼ â– â– â– â–  ë‚´ê³¼ â– â– â– â–  ì´ë¹„ì¸í›„ê³¼ â– â– â– â–  ì‹ ê²½ê³¼ â– â– â– â–  ì‚°ë¶€ì¸ê³¼ â– â– â– â–  ì†Œì•„ê³¼ â– â– â– â–  ì•ˆê³¼ â– â– â– â– ]\n");
-        printf("í¬ë§ì§„ë£Œê³¼ëŠ”? ");
+        printf("\n[¡á¡á¡á¡á ¿Ü°ú ¡á¡á¡á¡á ³»°ú ¡á¡á¡á¡á ÀÌºñÀÎÈÄ°ú ¡á¡á¡á¡á ½Å°æ°ú ¡á¡á¡á¡á »êºÎÀÎ°ú ¡á¡á¡á¡á ¼Ò¾Æ°ú ¡á¡á¡á¡á ¾È°ú ¡á¡á¡á¡á]\n");
+        printf("Èñ¸ÁÁø·á°ú´Â? ");
         fflush(stdin);
         fgets(m->medicDept, sizeof(m->medicDept), stdin);
         m->medicDept[strlen(m->medicDept) - 1] = '\0';
         check++;
-    } while (strstr(m->medicDept, "ì™¸ê³¼") == NULL && strstr(m->medicDept, "ë‚´ê³¼") == NULL && strstr(m->medicDept, "ì´ë¹„ì¸í›„ê³¼") == NULL && strstr(m->medicDept, "ì‹ ê²½ê³¼") == NULL && strstr(m->medicDept, "ì‚°ë¶€ì¸ê³¼") == NULL && strstr(m->medicDept, "ì†Œì•„ê³¼") == NULL && strstr(m->medicDept, "ì•ˆê³¼") == NULL);
+    } while (strstr(m->medicDept, "¿Ü°ú") == NULL && strstr(m->medicDept, "³»°ú") == NULL && strstr(m->medicDept, "ÀÌºñÀÎÈÄ°ú") == NULL && strstr(m->medicDept, "½Å°æ°ú") == NULL && strstr(m->medicDept, "»êºÎÀÎ°ú") == NULL && strstr(m->medicDept, "¼Ò¾Æ°ú") == NULL && strstr(m->medicDept, "¾È°ú") == NULL);
 
     strcpy(m->prof, proflist(m->medicDept));
 
-    printf("íŠ¹ì´ì‚¬í•­ì€(í˜„ì¬ ì¦ìƒ)? ");
+    printf("Æ¯ÀÌ»çÇ×Àº(ÇöÀç Áõ»ó)? ");
     fflush(stdin);
     fgets(m->memo, sizeof(m->memo), stdin);
     m->memo[strlen(m->memo) - 1] = '\0';
@@ -200,7 +200,7 @@ int updateAppointment(medical *m)
     int check = 0;
 
     printf("**************************************************\n");
-    printf("í™˜ìëª…ì€? ");
+    printf("È¯ÀÚ¸íÀº? ");
     fflush(stdin);
     fgets(m->patientName, sizeof(m->patientName), stdin);
     m->patientName[strlen(m->patientName) - 1] = '\0';
@@ -208,9 +208,9 @@ int updateAppointment(medical *m)
     do
     {
         if (check != 0)
-            printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...í˜•ì‹ì— ë§ê²Œ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...Çü½Ä¿¡ ¸Â°Ô Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
 
-        printf("í¬ë§ ì˜ˆì•½ì¼ìëŠ”(eg. 20230505(2023ë…„ 5ì›” 5ì¼))? ");
+        printf("Èñ¸Á ¿¹¾àÀÏÀÚ´Â(eg. 20230505(2023³â 5¿ù 5ÀÏ))? ");
         fflush(stdin);
         fgets(m->date, sizeof(m->date), stdin);
         m->date[strlen(m->date) - 1] = '\0';
@@ -221,9 +221,9 @@ int updateAppointment(medical *m)
     do
     {
         if (check != 0)
-            printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...í˜•ì‹ì— ë§ê²Œ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...Çü½Ä¿¡ ¸Â°Ô Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
 
-        printf("ìƒë…„ì›”ì¼ì€(eg. 20230505(2023ë…„ 5ì›” 5ì¼))? ");
+        printf("»ı³â¿ùÀÏÀº(eg. 20230505(2023³â 5¿ù 5ÀÏ))? ");
         fflush(stdin);
         fgets(m->birth, sizeof(m->birth), stdin);
         m->birth[strlen(m->birth) - 1] = '\0';
@@ -234,10 +234,10 @@ int updateAppointment(medical *m)
     do
     {
         if (check != 0)
-            printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...í˜•ì‹ì— ë§ê²Œ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...Çü½Ä¿¡ ¸Â°Ô Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
 
         fflush(stdin);
-        printf("ì„±ë³„ì€(ì—¬ì : F, ë‚¨ì : M)? ");
+        printf("¼ºº°Àº(¿©ÀÚ : F, ³²ÀÚ : M)? ");
         scanf("%c", &m->gender);
         check++;
     } while (m->gender != 'M' && m->gender != 'F');
@@ -246,19 +246,19 @@ int updateAppointment(medical *m)
     do
     {
         if (check != 0)
-            printf("í•´ë‹¹ ê³¼ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤...í˜„ì¬ ì¡´ì¬í•˜ëŠ” ê³¼ë¥¼ ì„ íƒí•˜ì„¸ìš”!\n\n");
+            printf("ÇØ´ç °ú´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù...ÇöÀç Á¸ÀçÇÏ´Â °ú¸¦ ¼±ÅÃÇÏ¼¼¿ä!\n\n");
 
-        printf("\n[â– â– â– â–  ì™¸ê³¼ â– â– â– â–  ë‚´ê³¼ â– â– â– â–  ì´ë¹„ì¸í›„ê³¼ â– â– â– â–  ì‹ ê²½ê³¼ â– â– â– â–  ì‚°ë¶€ì¸ê³¼ â– â– â– â–  ì†Œì•„ê³¼ â– â– â– â–  ì•ˆê³¼ â– â– â– â– ]\n");
-        printf("í¬ë§ì§„ë£Œê³¼ëŠ”? ");
+        printf("\n[¡á¡á¡á¡á ¿Ü°ú ¡á¡á¡á¡á ³»°ú ¡á¡á¡á¡á ÀÌºñÀÎÈÄ°ú ¡á¡á¡á¡á ½Å°æ°ú ¡á¡á¡á¡á »êºÎÀÎ°ú ¡á¡á¡á¡á ¼Ò¾Æ°ú ¡á¡á¡á¡á ¾È°ú ¡á¡á¡á¡á]\n");
+        printf("Èñ¸ÁÁø·á°ú´Â? ");
         fflush(stdin);
         fgets(m->medicDept, sizeof(m->medicDept), stdin);
         m->medicDept[strlen(m->medicDept) - 1] = '\0';
         check++;
-    } while (strstr(m->medicDept, "ì™¸ê³¼") == NULL && strstr(m->medicDept, "ë‚´ê³¼") == NULL && strstr(m->medicDept, "ì´ë¹„ì¸í›„ê³¼") == NULL && strstr(m->medicDept, "ì‹ ê²½ê³¼") == NULL && strstr(m->medicDept, "ì‚°ë¶€ì¸ê³¼") == NULL && strstr(m->medicDept, "ì†Œì•„ê³¼") == NULL && strstr(m->medicDept, "ì•ˆê³¼") == NULL);
+    } while (strstr(m->medicDept, "¿Ü°ú") == NULL && strstr(m->medicDept, "³»°ú") == NULL && strstr(m->medicDept, "ÀÌºñÀÎÈÄ°ú") == NULL && strstr(m->medicDept, "½Å°æ°ú") == NULL && strstr(m->medicDept, "»êºÎÀÎ°ú") == NULL && strstr(m->medicDept, "¼Ò¾Æ°ú") == NULL && strstr(m->medicDept, "¾È°ú") == NULL);
 
     strcpy(m->prof, proflist(m->medicDept));
 
-    printf("íŠ¹ì´ì‚¬í•­ì€(í˜„ì¬ ì¦ìƒ)? ");
+    printf("Æ¯ÀÌ»çÇ×Àº(ÇöÀç Áõ»ó)? ");
     fflush(stdin);
     fgets(m->memo, sizeof(m->memo), stdin);
     m->memo[strlen(m->memo) - 1] = '\0';
@@ -268,7 +268,7 @@ int updateAppointment(medical *m)
 int deleteAppointment(medical **m)
 {
     int dlt_ok;
-    printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ(ì‚­ì œ:1 ì·¨ì†Œ:0)? ");
+    printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î(»èÁ¦:1 Ãë¼Ò:0)? ");
     scanf("%d", &dlt_ok);
     if (dlt_ok != 1)
         return 0;
@@ -284,7 +284,7 @@ int selectAppointment(medical *m[], int cnt)
     int select;
     listAppointment(m, cnt);
 
-    printf("ë²ˆí˜¸ëŠ”(ì·¨ì†Œ:0)? ");
+    printf("¹øÈ£´Â(Ãë¼Ò:0)? ");
     scanf("%d", &select);
 
     return select;
@@ -300,7 +300,7 @@ void saveToFile(medical *m[], int cnt)
         fprintf(fp, "%s,%s,%s,%c %s,%s,%s\n", m[i]->patientName, m[i]->date, m[i]->birth, m[i]->gender, m[i]->medicDept, m[i]->prof, m[i]->memo);
     }
     fclose(fp);
-    printf("=============ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤ ^0^=============\n");
+    printf("=============ÀúÀåµÇ¾ú½À´Ï´Ù ^0^=============\n");
 }
 int loadFile(medical *m[])
 {
@@ -310,7 +310,7 @@ int loadFile(medical *m[])
     int i = 0;
     if (fp == NULL)
     {
-        printf("=> íŒŒì¼ ì—†ìŒ!\n");
+        printf("=> ÆÄÀÏ ¾øÀ½!\n");
         return 0;
     }
     for (i = 0; i < 100; i++)
@@ -338,7 +338,7 @@ int loadFile(medical *m[])
         fscanf(fp, "%c", &trash);
     }
     fclose(fp);
-    printf("=> ë¡œë”© ì„±ê³µ!\n");
+    printf("=> ·Îµù ¼º°ø!\n");
 
     return i;
 }
@@ -379,7 +379,7 @@ int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check)
     if (scnt == 0)
     {
         if (menu_check != 2)
-            printf("ì°¾ìœ¼ì‹œëŠ” ì˜ˆì•½ í™˜ìê°€ ì—†ìŠµë‹ˆë‹¤...\n");
+            printf("Ã£À¸½Ã´Â ¿¹¾à È¯ÀÚ°¡ ¾ø½À´Ï´Ù...\n");
         return 0;
     }
     return 1;
@@ -390,11 +390,11 @@ void searchByDate(medical *m[], int cnt)
     int no = 0;
     while (1)
     {
-        printf("ì°¾ì•„ë³¼ ì˜ˆì•½ ë‚ ì§œëŠ”? (eg. 20230505(2023ë…„ 5ì›” 5ì¼)) : ");
+        printf("Ã£¾Æº¼ ¿¹¾à ³¯Â¥´Â? (eg. 20230505(2023³â 5¿ù 5ÀÏ)) : ");
         scanf("%s", date);
         if (strlen(date) == 8)
             break;
-        printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...í˜•ì‹ì— ë§ê²Œ ì œëŒ€ë¡œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+        printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...Çü½Ä¿¡ ¸Â°Ô Á¦´ë·Î ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
     }
     printf("========================================================================================\n");
     printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
@@ -412,7 +412,7 @@ void searchByDate(medical *m[], int cnt)
         }
     }
     if (no == 0)
-        printf("ì°¾ìœ¼ì‹œëŠ” ë‚ ì§œì— ì˜ˆì •ëœ ì˜ˆì•½ì´ ì—†ìŠµë‹ˆë‹¤.\n");
+        printf("Ã£À¸½Ã´Â ³¯Â¥¿¡ ¿¹Á¤µÈ ¿¹¾àÀÌ ¾ø½À´Ï´Ù.\n");
 }
 
 void searchByDepartment(medical *m[], int cnt)
@@ -422,17 +422,17 @@ void searchByDepartment(medical *m[], int cnt)
     do
     {
         if (check != 0)
-            printf("í•´ë‹¹ ê³¼ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤...í˜„ì¬ ì¡´ì¬í•˜ëŠ” ê³¼ë¥¼ ì„ íƒí•˜ì„¸ìš”!\n\n");
+            printf("ÇØ´ç °ú´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù...ÇöÀç Á¸ÀçÇÏ´Â °ú¸¦ ¼±ÅÃÇÏ¼¼¿ä!\n\n");
 
-        printf("\n[â– â– â– â–  ì™¸ê³¼ â– â– â– â–  ë‚´ê³¼ â– â– â– â–  ì´ë¹„ì¸í›„ê³¼ â– â– â– â–  ì‹ ê²½ê³¼ â– â– â– â–  ì‚°ë¶€ì¸ê³¼ â– â– â– â–  ì†Œì•„ê³¼ â– â– â– â–  ì•ˆê³¼ â– â– â– â– ]\n");
-        printf("ì˜ˆì•½ ë‚´ì—­ì„ ê²€ìƒ‰í•˜ê³  ì‹¶ì€ ì§„ë£Œê³¼ëŠ”? ");
+        printf("\n[¡á¡á¡á¡á ¿Ü°ú ¡á¡á¡á¡á ³»°ú ¡á¡á¡á¡á ÀÌºñÀÎÈÄ°ú ¡á¡á¡á¡á ½Å°æ°ú ¡á¡á¡á¡á »êºÎÀÎ°ú ¡á¡á¡á¡á ¼Ò¾Æ°ú ¡á¡á¡á¡á ¾È°ú ¡á¡á¡á¡á]\n");
+        printf("¿¹¾à ³»¿ªÀ» °Ë»öÇÏ°í ½ÍÀº Áø·á°ú´Â? ");
         fflush(stdin);
         fgets(deptName, sizeof(deptName), stdin);
         deptName[strlen(deptName) - 1] = '\0';
         check++;
-    } while (strstr(deptName, "ì™¸ê³¼") == NULL && strstr(deptName, "ë‚´ê³¼") == NULL && strstr(deptName, "ì´ë¹„ì¸í›„ê³¼") == NULL && strstr(deptName, "ì‹ ê²½ê³¼") == NULL && strstr(deptName, "ì‚°ë¶€ì¸ê³¼") == NULL && strstr(deptName, "ì†Œì•„ê³¼") == NULL && strstr(deptName, "ì•ˆê³¼") == NULL);
+    } while (strstr(deptName, "¿Ü°ú") == NULL && strstr(deptName, "³»°ú") == NULL && strstr(deptName, "ÀÌºñÀÎÈÄ°ú") == NULL && strstr(deptName, "½Å°æ°ú") == NULL && strstr(deptName, "»êºÎÀÎ°ú") == NULL && strstr(deptName, "¼Ò¾Æ°ú") == NULL && strstr(deptName, "¾È°ú") == NULL);
 
-    printf("\n\nê²€ìƒ‰ì„ ìš”ì²­í•˜ì‹  ì§„ë£Œê³¼ëŠ” '%s'ì…ë‹ˆë‹¤!\n\n", deptName);
+    printf("\n\n°Ë»öÀ» ¿äÃ»ÇÏ½Å Áø·á°ú´Â '%s'ÀÔ´Ï´Ù!\n\n", deptName);
 
     printf("========================Make an medical appointment with H-medic========================\n");
     printf("========================================================================================\n");
@@ -452,7 +452,7 @@ void searchByDepartment(medical *m[], int cnt)
     }
     if (print_count == 0)
     {
-        printf(">>>>>> í˜„ì¬ '%s'ì˜ ì˜ˆì•½ ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤!\n", deptName);
+        printf(">>>>>> ÇöÀç '%s'ÀÇ ¿¹¾à ³»¿ªÀÌ ¾ø½À´Ï´Ù!\n", deptName);
     }
 }
 void searchByProf(medical *m[], int cnt)
@@ -478,29 +478,29 @@ void searchByProf(medical *m[], int cnt)
         }
     }
     if (no == 0)
-        printf(">>>>>> í•´ë‹¹ êµìˆ˜ë‹˜ì˜ ì˜ˆì•½ ë‚´ì—­ì€ ì—†ìŠµë‹ˆë‹¤.\n");
+        printf(">>>>>> ÇØ´ç ±³¼ö´ÔÀÇ ¿¹¾à ³»¿ªÀº ¾ø½À´Ï´Ù.\n");
 }
 
 int selectMenu()
 {
     int menu;
     printf("===========================================\n");
-    printf("====>>>>>  H-medicì˜ menuì…ë‹ˆë‹¤.  <<<<<====\n");
+    printf("====>>>>>  H-medicÀÇ menuÀÔ´Ï´Ù.  <<<<<====\n");
     printf("===========================================\n");
 
-    printf("|             1. ì¡°íšŒ                      |\n");
-    printf("|             2. ì¶”ê°€                      |\n");
-    printf("|             3. ìˆ˜ì •                      |\n");
-    printf("|             4. ì‚­ì œ                      |\n");
-    printf("|             5. íŒŒì¼ ì €ì¥                 |\n");
-    printf("|             6. ì˜ˆì•½ìëª… ê²€ìƒ‰             |\n");
-    printf("|             7. ì˜ˆì•½í™˜ì ëª©ë¡ ì¼ìë³„ ê²€ìƒ‰ |\n");
-    printf("|             8. ì˜ˆì•½í™˜ì ëª©ë¡ ì§„ë£Œê³¼ ê²€ìƒ‰ |\n");
-    printf("|             9. ì˜ˆì•½í™˜ì ëª©ë¡ êµìˆ˜ë³„ ê²€ìƒ‰ |\n");
-    printf("|             0. ì¢…ë£Œ                      |\n");
+    printf("|             1. Á¶È¸                      |\n");
+    printf("|             2. Ãß°¡                      |\n");
+    printf("|             3. ¼öÁ¤                      |\n");
+    printf("|             4. »èÁ¦                      |\n");
+    printf("|             5. ÆÄÀÏ ÀúÀå                 |\n");
+    printf("|             6. ¿¹¾àÀÚ¸í °Ë»ö             |\n");
+    printf("|             7. ¿¹¾àÈ¯ÀÚ ¸ñ·Ï ÀÏÀÚº° °Ë»ö |\n");
+    printf("|             8. ¿¹¾àÈ¯ÀÚ ¸ñ·Ï Áø·á°ú °Ë»ö |\n");
+    printf("|             9. ¿¹¾àÈ¯ÀÚ ¸ñ·Ï ±³¼öº° °Ë»ö |\n");
+    printf("|             0. Á¾·á                      |\n");
     printf("===========================================\n\n");
 
-    printf("=> ì›í•˜ëŠ” ë©”ë‰´ëŠ”? ");
+    printf("=> ¿øÇÏ´Â ¸Ş´º´Â? ");
     scanf("%d", &menu);
 
     return menu;
@@ -522,7 +522,7 @@ int main()
 
         if (cnt == 0 && (menu == 1 || menu == 3 || menu == 4 || menu == 5 || menu == 6 || menu == 7 || menu == 8 || menu == 9))
         {
-            printf("ì €ì¥ëœ ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤...ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("ÀúÀåµÈ µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù...´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
             continue;
         }
         if (menu == 1)
@@ -532,7 +532,7 @@ int main()
         else if (menu == 2)
         {
             printf("**************************************************\n");
-            printf("í™˜ìëª…ì€? ");
+            printf("È¯ÀÚ¸íÀº? ");
             fflush(stdin);
             fgets(name, sizeof(name), stdin);
             name[strlen(name) - 1] = '\0';
@@ -540,7 +540,7 @@ int main()
 
             if (dup_check == -1)
             {
-                printf("ì´ë¯¸ ì˜ˆì•½ì´ ì¡´ì¬í•©ë‹ˆë‹¤...'ì˜ˆì•½ ìˆ˜ì •'ì„ ì´ìš©í•´ì£¼ì„¸ìš”! \n\n");
+                printf("ÀÌ¹Ì ¿¹¾àÀÌ Á¸ÀçÇÕ´Ï´Ù...'¿¹¾à ¼öÁ¤'À» ÀÌ¿ëÇØÁÖ¼¼¿ä! \n\n");
                 continue;
             }
             m1[ind] = (medical *)malloc(sizeof(medical));
@@ -553,12 +553,12 @@ int main()
             no = selectAppointment(m1, cnt);
             if (no == 0)
             {
-                printf("=> ì·¨ì†Œë¨!\n");
+                printf("=> Ãë¼ÒµÊ!\n");
                 continue;
             }
             udt_ck = updateAppointment(m1[no - 1]);
             if (udt_ck == 1)
-                printf("=> ìˆ˜ì •ë¨!\n");
+                printf("=> ¼öÁ¤µÊ!\n");
         }
         else if (menu == 4)
         {
@@ -566,17 +566,17 @@ int main()
             no = selectAppointment(m1, cnt);
             if (no == 0)
             {
-                printf("=> ì·¨ì†Œë¨!\n");
+                printf("=> Ãë¼ÒµÊ!\n");
                 continue;
             }
             dlt_ck = deleteAppointment(&m1[no - 1]);
             if (dlt_ck == 1)
             {
-                printf("=> ì‚­ì œë¨!\n");
+                printf("=> »èÁ¦µÊ!\n");
             }
             else
             {
-                printf("=> ì·¨ì†Œë¨!\n");
+                printf("=> Ãë¼ÒµÊ!\n");
             }
         }
         else if (menu == 5)
@@ -587,13 +587,13 @@ int main()
         {
             listAppointment(m1, cnt);
             int search;
-            printf("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ ì˜ˆì•½ í™˜ìëª…ì€? ");
+            printf("°Ë»öÇÏ°í ½ÍÀº ¿¹¾à È¯ÀÚ¸íÀº? ");
             fflush(stdin);
             fgets(name, sizeof(name), stdin);
             name[strlen(name) - 1] = '\0';
             search = searchByPatient(m1, cnt, name, menu);
             if (search == 1)
-                printf("\n=> ê²€ìƒ‰ ì™„ë£Œ\n");
+                printf("\n=> °Ë»ö ¿Ï·á\n");
         }
         else if (menu == 7)
         {
@@ -612,7 +612,7 @@ int main()
             break;
         else
         {
-            printf("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤...ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”!\n\n");
+            printf("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù...´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä!\n\n");
             continue;
         }
         printf("\n");

@@ -10,16 +10,16 @@ typedef struct{
     char memo[50];
 }medical;
 
-int addAppointment(medical *m);                                           // ì§„ë£Œ ì˜ˆì•½ì„ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
-void readAppointment(medical m);                                          // í•˜ë‚˜ì˜ ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-void listAppointment(medical *m[], int cnt);                              // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ëª©ë¡ì„ ë³´ì—¬ì£¼ëŠ” í•¨ìˆ˜
-int updateAppointment(medical *m);                                        // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ íŠ¹ì • ì˜ˆì•½ì„ ìˆ˜ì •í•´ì£¼ëŠ” í•¨ìˆ˜
-int deleteAppointment(medical **m);                                       // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ íŠ¹ì • ì˜ˆì•½ì„ ì‚­ì œí•´ì£¼ëŠ” í•¨ìˆ˜
-int selectAppointment(medical *m[], int cnt);                             // ì˜ˆì•½ëœ ì§„ë£Œ ì˜ˆì•½ ì¤‘ì— ìˆ˜ì •,ì‚­ì œí•˜ê³  ì‹¶ì€ ì˜ˆì•½ì„ ì„ íƒí•´ì£¼ëŠ” í•¨ìˆ˜
-void saveToFile(medical *m[], int cnt);                                   // ë°ì´í„°ë¥¼ íŒŒì¼ì— ì €ì¥í•´ì£¼ëŠ” í•¨ìˆ˜
-int loadFile(medical *m[]);                                               // íŒŒì¼ì—ì„œ ì €ì¥ëœ ë°ì´í„°ë¥¼ ì½ì–´ì˜¤ëŠ” í•¨ìˆ˜
-int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check); // ì˜ˆì•½ëœ í™˜ì ì´ë¦„ìœ¼ë¡œ ì˜ˆì•½ ë‚´ì—­ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-void searchByDate(medical *m[], int cnt);                                 // íŠ¹ì • ì¼ìì— ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-void searchByDepartment(medical *m[], int cnt);                           // íŠ¹ì • ì§„ë£Œê³¼ì— ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-void searchByProf(medical *m[], int cnt);                                 // íŠ¹ì • êµìˆ˜ì—ê²Œ ì˜ˆì•½ëœ ì˜ˆì•½ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
-const char *proflist(char s[]);                                           // êµìˆ˜ ëª©ë¡ì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
+int addAppointment(medical *m);                                           // Áø·á ¿¹¾àÀ» Ãß°¡ÇÏ´Â ÇÔ¼ö
+void readAppointment(medical m);                                          // ÇÏ³ªÀÇ ¿¹¾àµÈ Áø·á ¿¹¾àÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+void listAppointment(medical *m[], int cnt);                              // ¿¹¾àµÈ Áø·á ¿¹¾à ¸ñ·ÏÀ» º¸¿©ÁÖ´Â ÇÔ¼ö
+int updateAppointment(medical *m);                                        // ¿¹¾àµÈ Áø·á ¿¹¾à Áß Æ¯Á¤ ¿¹¾àÀ» ¼öÁ¤ÇØÁÖ´Â ÇÔ¼ö
+int deleteAppointment(medical **m, int cnt, int no);                                       // ¿¹¾àµÈ Áø·á ¿¹¾à Áß Æ¯Á¤ ¿¹¾àÀ» »èÁ¦ÇØÁÖ´Â ÇÔ¼ö
+int selectAppointment(medical *m[], int cnt);                             // ¿¹¾àµÈ Áø·á ¿¹¾à Áß¿¡ ¼öÁ¤,»èÁ¦ÇÏ°í ½ÍÀº ¿¹¾àÀ» ¼±ÅÃÇØÁÖ´Â ÇÔ¼ö
+void saveToFile(medical *m[], int cnt);                                   // µ¥ÀÌÅÍ¸¦ ÆÄÀÏ¿¡ ÀúÀåÇØÁÖ´Â ÇÔ¼ö
+int loadFile(medical *m[]);                                               // ÆÄÀÏ¿¡¼­ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ ÀĞ¾î¿À´Â ÇÔ¼ö
+int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check); // ¿¹¾àµÈ È¯ÀÚ ÀÌ¸§À¸·Î ¿¹¾à ³»¿ªÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+void searchByDate(medical *m[], int cnt);                                 // Æ¯Á¤ ÀÏÀÚ¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+void searchByDepartment(medical *m[], int cnt);                           // Æ¯Á¤ Áø·á°ú¿¡ ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+void searchByProf(medical *m[], int cnt);                                 // Æ¯Á¤ ±³¼ö¿¡°Ô ¿¹¾àµÈ ¿¹¾à ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö
+const char *proflist(char s[]);                                           // ±³¼ö ¸ñ·ÏÀ» Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö

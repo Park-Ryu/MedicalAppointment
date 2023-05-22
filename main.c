@@ -66,7 +66,7 @@ int main()
                 printf("=> ร๋ผาตส!\n");
                 continue;
             }
-            dlt_ck = deleteAppointment(&m1[no - 1]);
+            dlt_ck = deleteAppointment(m1, cnt, no);
             if (dlt_ck == 1)
             {
                 printf("=> ป่มฆตส!\n");
