@@ -17,7 +17,7 @@ int addAppointment(medical *m);                                           // 진�
 void readAppointment(medical m);                                          // 하나의 예약된 진료 예약을 출력해주는 함수
 void listAppointment(medical *m[], int cnt);                              // 예약된 진료 예약 목록을 보여주는 함수
 int updateAppointment(medical *m);                                        // 예약된 진료 예약 중 특정 예약을 수정해주는 함수
-int deleteAppointment(medical **m);                                       // 예약된 진료 예약 중 특정 예약을 삭제해주는 함수
+int deleteAppointment(medical **m, int cnt, int no);                      // 예약된 진료 예약 중 특정 예약을 삭제해주는 함수
 int selectAppointment(medical *m[], int cnt);                             // 예약된 진료 예약 중에 수정,삭제하고 싶은 예약을 선택해주는 함수
 void saveToFile(medical *m[], int cnt);                                   // 데이터를 파일에 저장해주는 함수
 int loadFile(medical *m[]);                                               // 파일에서 저장된 데이터를 읽어오는 함수
@@ -186,11 +186,13 @@ void listAppointment(medical *m[], int cnt)
     printf("========================================================================================\n");
     printf("No PatientName    date           birth      gender   medicDepartment      prof     memo          \n");
     printf("----------------------------------------------------------------------------------------\n");
+    int n = 0;
     for (int i = 0; i < cnt; i++)
     {
         if (m[i] == NULL)
             continue;
-        printf("%2d ", i + 1);
+        n++;
+        printf("%2d ", n);
         readAppointment(*m[i]);
     }
     printf("\n");
@@ -265,7 +267,7 @@ int updateAppointment(medical *m)
 
     return 1;
 }
-int deleteAppointment(medical **m)
+int deleteAppointment(medical **m, int cnt, int no)
 {
     int dlt_ok;
     printf("정말로 삭제하시겠습니까(삭제:1 취소:0)? ");
@@ -273,9 +275,20 @@ int deleteAppointment(medical **m)
     if (dlt_ok != 1)
         return 0;
 
-    if ((*m) == NULL)
-        free((*m));
-    (*m) = NULL;
+    int n = 0;
+    for(int i = 0; i < cnt; i++) {
+        if((m[i]) == NULL) continue;
+        n++;
+        if(n == no) {
+            (m[i]) = NULL;
+            free((m[i]));
+        }
+        
+    }
+
+    // if ((*m) == NULL)
+    //     free((*m));
+    // (*m) = NULL;
 
     return 1;
 }
@@ -348,7 +361,7 @@ int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check)
     int no = 0;
     int scnt = 0;
 
-    if (menu_check != 2)
+    if (menu_check != 2 && menu_check!=3)
     {
         printf("========================Make an medical appointment with H-medic========================\n");
         printf("========================================================================================\n");
@@ -359,8 +372,8 @@ int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check)
     {
         if (m[i] == NULL)
             continue;
-        no++;
-        if (menu_check == 2)
+        
+        if (menu_check == 2 || menu_check == 3)
         {
             if (strcmp(m[i]->patientName, Pname) == 0)
                 return -1;
@@ -369,6 +382,7 @@ int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check)
         {
             if (strstr(m[i]->patientName, Pname))
             {
+                no++;
                 printf("%2d", no);
                 readAppointment(*m[i]);
                 scnt++;
@@ -378,7 +392,7 @@ int searchByPatient(medical *m[], int cnt, char Pname[], int menu_check)
 
     if (scnt == 0)
     {
-        if (menu_check != 2)
+        if (menu_check != 2 && menu_check!=3)
             printf("찾으시는 예약 환자가 없습니다...\n");
         return 0;
     }
@@ -556,6 +570,20 @@ int main()
                 printf("=> 취소됨!\n");
                 continue;
             }
+
+            printf("**************************************************\n");
+            printf("환자명은? ");
+            fflush(stdin);
+            fgets(name, sizeof(name), stdin);
+            name[strlen(name) - 1] = '\0';
+            dup_check = searchByPatient(m1, cnt, name, menu);
+
+            if (dup_check == -1)
+            {
+                printf("이미 예약이 존재합니다...'해당 환자를 예약 수정'해주세요! \n\n");
+                continue;
+            }
+
             udt_ck = updateAppointment(m1[no - 1]);
             if (udt_ck == 1)
                 printf("=> 수정됨!\n");
@@ -569,7 +597,7 @@ int main()
                 printf("=> 취소됨!\n");
                 continue;
             }
-            dlt_ck = deleteAppointment(&m1[no - 1]);
+            dlt_ck = deleteAppointment(m1,cnt,no);
             if (dlt_ck == 1)
             {
                 printf("=> 삭제됨!\n");
