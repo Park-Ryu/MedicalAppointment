@@ -53,6 +53,20 @@ int main()
                 printf("=> 취소됨!\n");
                 continue;
             }
+
+            printf("**************************************************\n");
+            printf("환자명은? ");
+            fflush(stdin);
+            fgets(name, sizeof(name), stdin);
+            name[strlen(name) - 1] = '\0';
+            dup_check = searchByPatient(m1, cnt, name, menu);
+
+            if (dup_check == -1)
+            {
+                printf("이미 예약이 존재합니다...'해당 환자를 예약 수정'해주세요! \n\n");
+                continue;
+            }
+
             udt_ck = updateAppointment(m1[no - 1]);
             if (udt_ck == 1)
                 printf("=> 수정됨!\n");
@@ -66,7 +80,7 @@ int main()
                 printf("=> 취소됨!\n");
                 continue;
             }
-            dlt_ck = deleteAppointment(m1, cnt, no);
+            dlt_ck = deleteAppointment(m1,cnt,no);
             if (dlt_ck == 1)
             {
                 printf("=> 삭제됨!\n");
