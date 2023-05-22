@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include "menu.h"
 
-int selectMenu(){
+int selectMenu()
+{
     int menu;
     printf("===========================================\n");
     printf("====>>>>>  H-medic의 menu입니다.  <<<<<====\n");
@@ -20,7 +21,7 @@ int selectMenu(){
     printf("===========================================\n\n");
 
     printf("=> 원하는 메뉴는? ");
-    scanf("%d",&menu);
+    scanf("%d", &menu);
 
     return menu;
 }
